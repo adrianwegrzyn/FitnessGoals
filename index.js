@@ -1,10 +1,15 @@
 import {Navigation} from "react-native-navigation";
+import { Dimensions } from 'react-native'
+
+//import windows
 import App from './App';
 import Drawer from './src/Drawer'
-import { Dimensions } from 'react-native'
+import Chat from  './src/chat/components/Chat'
 
 Navigation.registerComponent('App', () => App);
 Navigation.registerComponent('Drawer', () => Drawer);
+Navigation.registerComponent('Chat', () => Chat);
+
 
 const { width } = Dimensions.get('window');
 Navigation.events().registerAppLaunchedListener(() => {

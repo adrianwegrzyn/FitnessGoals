@@ -22,6 +22,14 @@ export default class App extends Component<> {
         })
     };
 
+    newWindow = () => {
+        Navigation.push(this.props.componentId, {
+            component: {
+                name: 'Chat',
+            }
+        });
+    };
+
     render() {
         return (
             <View style={styles.container}>
@@ -73,7 +81,7 @@ export default class App extends Component<> {
                     {/*3*/}
 
                     <View style={styles.rowMenu}>
-                        <TouchableOpacity style={styles.itemTouchableOpacity}>
+                        <TouchableOpacity onPress={this.newWindow} style={styles.itemTouchableOpacity} >
                             <Icon name='wechat' size={80} color='#94C7E3'/>
                             <Text style={styles.textTouchableOpacity}>Czat</Text>
                         </TouchableOpacity>
