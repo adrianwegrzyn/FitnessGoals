@@ -3,7 +3,8 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Navigation} from 'react-native-navigation';
-// import {Icon} from 'react-native-elements';
+import LinearGradient from 'react-native-linear-gradient';
+
 
 
 export default class App extends Component<> {
@@ -47,15 +48,15 @@ export default class App extends Component<> {
                 <View style={styles.content}>
                     <View style={styles.rowMenu}>
                         <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='run' size={80} color='#94C7E3'/>
+                            <Icon name='run' size={80} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Plan treningowy</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='bowl' size={80} color='#94C7E3'/>
+                            <Icon name='bowl' size={80} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Dieta</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='newspaper' size={80} color='#94C7E3'/>
+                            <Icon name='newspaper' size={80} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Artykuły sportowe</Text>
                         </TouchableOpacity>
                     </View>
@@ -64,15 +65,15 @@ export default class App extends Component<> {
 
                     <View style={styles.rowMenu}>
                         <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='chart-line' size={80} color='#94C7E3'/>
+                            <Icon name='chart-line' size={80} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Historia postępów</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='basket' size={80} color='#94C7E3'/>
+                            <Icon name='basket' size={80} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Zakupy</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='lead-pencil' size={80} color='#94C7E3'/>
+                            <Icon name='lead-pencil' size={80} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Pomiary</Text>
                         </TouchableOpacity>
                     </View>
@@ -81,15 +82,15 @@ export default class App extends Component<> {
 
                     <View style={styles.rowMenu}>
                         <TouchableOpacity onPress={() => this.newWindow('Chat')} style={styles.itemTouchableOpacity}>
-                            <Icon name='wechat' size={80} color='#94C7E3'/>
+                            <Icon name='wechat' size={80} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Czat</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='calculator' size={80} color='#94C7E3'/>
+                            <Icon name='calculator' size={80} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Kalkulator BMI</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='silverware-variant' size={80} color='#94C7E3'/>
+                            <Icon name='silverware-variant' size={80} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Zapotrzebowanie kaloryczne</Text>
                         </TouchableOpacity>
                     </View>
@@ -98,21 +99,33 @@ export default class App extends Component<> {
 
                     <View style={styles.rowMenu}>
                         <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='map-marker-minus' size={80} color='#94C7E3'/>
+                            <Icon name='map-marker-minus' size={80} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Mapa biegów</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => this.newWindow('ReviewsOptions')}
                                           style={styles.itemTouchableOpacity}>
-                            <Icon name='content-copy' size={80} color='#94C7E3'/>
+                            <Icon name='content-copy' size={80} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Opinie</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='information-variant' size={80} color='#94C7E3'/>
+                            <Icon name='information-variant' size={80} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Informacje</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.info}>
-                        <Text style={styles.infoText}>KUP PLAN</Text>
+
+
+                        <LinearGradient
+                            start={{x: 0.0, y: 0.25}} end={{x: 0.7, y: 2.0}}
+                            locations={[0,0.5,0.9]}
+                            colors={['#4c669f', '#3b5998', '#192f6a']}
+                            style={styles.linearGradient}>
+                            <Text style={styles.buttonText}>
+                                Zacznij już dziś !
+                            </Text>
+                        </LinearGradient>
+
+
                     </View>
                 </View>
             </View>
@@ -123,7 +136,7 @@ export default class App extends Component<> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#0388D2',
+        backgroundColor: '#FFFFFF',
     },
     toolbar: {
         flex: 1,
@@ -146,24 +159,36 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: '#0074B4',
+        borderColor: '#000000',
         borderWidth: 1,
     },
     textTouchableOpacity: {
         textAlign: 'center',
-        color: '#94C7E3',
+        color: '#7E7E7E',
         fontWeight: 'bold'
     },
     info: {
         flex: 0.4,
-        backgroundColor: '#FAA824',
-        alignItems: 'center',
+        backgroundColor: '#0388D2',
         justifyContent: 'center'
     },
     infoText: {
         fontSize: 25,
-        textAlign: 'center'
-    }
+        textAlign: 'center',
+        color: '#FFFFFF',
+        justifyContent: 'center'
+    },
+    linearGradient: {
+        flex: 1,
+    },
+    buttonText: {
+        fontSize: 18,
+        fontFamily: 'Gill Sans',
+        textAlign: 'center',
+        margin: 10,
+        color: '#ffffff',
+        backgroundColor: 'transparent',
+    },
 
 
 });
