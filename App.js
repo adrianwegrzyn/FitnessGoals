@@ -106,7 +106,7 @@ export default class App extends Component<> {
                             <Icon name='content-copy' size={80} color='#94C7E3'/>
                             <Text style={styles.textTouchableOpacity}>Opinie</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.itemTouchableOpacity}>
+                        <TouchableOpacity onPress={() => this.newWindow('Informations')} style={styles.itemTouchableOpacity}>
                             <Icon name='information-variant' size={80} color='#94C7E3'/>
                             <Text style={styles.textTouchableOpacity}>Informacje</Text>
                         </TouchableOpacity>
