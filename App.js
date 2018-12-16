@@ -22,10 +22,10 @@ export default class App extends Component<> {
         })
     };
 
-    newWindow = () => {
+    newWindow = (window) => {
         Navigation.push(this.props.componentId, {
             component: {
-                name: 'Chat',
+                name: window,
             }
         });
     };
@@ -40,7 +40,6 @@ export default class App extends Component<> {
                     <View style={{flex: 5, alignItems: 'center'}}>
                         <Text style={styles.nameToolBar}>Fitness Goals</Text>
                     </View>
-
                 </View>
 
                 {/*1*/}
@@ -81,7 +80,7 @@ export default class App extends Component<> {
                     {/*3*/}
 
                     <View style={styles.rowMenu}>
-                        <TouchableOpacity onPress={this.newWindow} style={styles.itemTouchableOpacity} >
+                        <TouchableOpacity onPress={() => this.newWindow('Chat')} style={styles.itemTouchableOpacity}>
                             <Icon name='wechat' size={80} color='#94C7E3'/>
                             <Text style={styles.textTouchableOpacity}>Czat</Text>
                         </TouchableOpacity>
@@ -102,7 +101,8 @@ export default class App extends Component<> {
                             <Icon name='map-marker-minus' size={80} color='#94C7E3'/>
                             <Text style={styles.textTouchableOpacity}>Mapa biegów</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.itemTouchableOpacity}>
+                        <TouchableOpacity onPress={() => this.newWindow('ReviewsOptions')}
+                                          style={styles.itemTouchableOpacity}>
                             <Icon name='content-copy' size={80} color='#94C7E3'/>
                             <Text style={styles.textTouchableOpacity}>Opinie</Text>
                         </TouchableOpacity>
@@ -133,19 +133,17 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     nameToolBar: {
-
         fontSize: 20,
-
     },
     content: {
         flex: 11,
     },
     rowMenu: {
-        flex:1,
+        flex: 1,
         flexDirection: 'row',
     },
     itemTouchableOpacity: {
-        flex:1,
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         borderColor: '#0074B4',
@@ -166,7 +164,6 @@ const styles = StyleSheet.create({
         fontSize: 25,
         textAlign: 'center'
     }
-
 
 
 });

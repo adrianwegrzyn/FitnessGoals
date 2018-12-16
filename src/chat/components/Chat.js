@@ -37,6 +37,7 @@ class Chat extends React.Component<> {
 
         return (
             <GiftedChat
+
                 messages={this.state.messages}
                 onSend={Fire.shared.send}
                 user={this.user}

@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, StatusBar} from 'react-native';
-import SplashScreen from 'react-native-splash-screen';
+import {StyleSheet, Text, View, StatusBar, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 
 
 export default class App extends Component<> {
-    componentDidMount() {
-        SplashScreen.hide();
-    }
+
     render() {
         return (
             <View style={styles.container}>
