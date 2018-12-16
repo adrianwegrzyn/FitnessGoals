@@ -4,11 +4,17 @@ import { Dimensions } from 'react-native'
 //import windows
 import App from './App';
 import Drawer from './src/Drawer'
-import Chat from  './src/chat/components/Chat'
+import Chat from './src/chat/components/Chat'
+import ReviewsOptions from './src/reviews/ReviewsOptions'
+import DietReviews from './src/reviews/dietReviews/DietReviews'
+
 
 Navigation.registerComponent('App', () => App);
 Navigation.registerComponent('Drawer', () => Drawer);
 Navigation.registerComponent('Chat', () => Chat);
+Navigation.registerComponent('ReviewsOptions', () => ReviewsOptions);
+Navigation.registerComponent('DietReviews', () => DietReviews);
+
 
 
 const { width } = Dimensions.get('window');
