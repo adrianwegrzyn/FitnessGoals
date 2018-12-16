@@ -79,6 +79,7 @@ export default class App extends Component<> {
                     </View>
 
                     {/*3*/}
+                    {/**/}
 
                     <View style={styles.rowMenu}>
                         <TouchableOpacity onPress={() => this.newWindow('Chat')} style={styles.itemTouchableOpacity}>
