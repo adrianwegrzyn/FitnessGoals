@@ -10,7 +10,7 @@ import {
     TouchableOpacity,
     TextInput
 } from 'react-native';
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import LinearGradient from 'react-native-linear-gradient';
 
 
 
@@ -33,6 +33,7 @@ export default class ReviewsOptions extends Component<> {
                     isLoading: false,
                     dataDietReviews: responseJson,
                 });
+
             });
     }
 
@@ -97,7 +98,6 @@ export default class ReviewsOptions extends Component<> {
 
     render() {
 
-
         let rowsReviews = [];
 
         for (let i = 0; i < this.state.dataDietReviews.length; i++) {
@@ -127,7 +127,7 @@ export default class ReviewsOptions extends Component<> {
         if(this.state.isLoading){
             return(
                 <View style={styles.loading}>
-                    <ActivityIndicator size="large" color="#00ff00" />
+                    <ActivityIndicator size="large" color="#3B5998" />
                 </View>
             )
         }
@@ -143,7 +143,7 @@ export default class ReviewsOptions extends Component<> {
                         {rowsReviews}
                     </ScrollView>
                 </View>
-                <View>
+
                     <TextInput
                         multiline={true}
                         numberOfLines={2}
@@ -151,10 +151,31 @@ export default class ReviewsOptions extends Component<> {
                         onChangeText={(message) => this.setState({message})}
                         value={this.state.message}
                     />
+                    {/*<LinearGradient*/}
+                    {/*start={{x: 0.0, y: 0.25}} end={{x: 0.7, y: 2.0}}*/}
+                    {/*locations={[0,0.5,0.9]}*/}
+                    {/*colors={['#ff1012', '#23ef00', '#060dc3']}*/}
+                    {/*style={styles.linearGradient}>*/}
+
                     <TouchableOpacity  onPress={() => this.sendResult()} style={styles.button}>
-                        <Text>Wyślij opinię</Text>
+                        <Text >Wyślij opinię</Text>
                     </TouchableOpacity>
-                </View>
+                {/*</LinearGradient>*/}
+
+
+                    {/*<LinearGradient*/}
+                        {/*colors={['#00FFFF', '#17C8FF', '#329BFF', '#4C64FF', '#6536FF', '#8000FF']}*/}
+                        {/*start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}*/}
+                        {/*style={{ height: 48, width: 200, alignItems: 'center', justifyContent: 'center', width: 200}}*/}
+                    {/*>*/}
+                        {/*<TouchableOpacity onPress={() => this.sendResult()} style={styles.buttonContainer}>*/}
+                            {/*<Text style={styles.buttonText}>*/}
+                                {/*LOGIN*/}
+                            {/*</Text>*/}
+                        {/*</TouchableOpacity>*/}
+                    {/*</LinearGradient>*/}
+
+
             </View>
         );
     }
@@ -226,15 +247,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderColor: '#000000',
         borderWidth: 1,
-        padding: 20,
+        padding: 5,
         margin: 10,
-        backgroundColor: '#FFFFFF',
         borderRadius: 5,
     },
     loading: {
         flex:1,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    linearGradient: {
+         alignItems: 'center',
+        justifyContent: 'center',
+
     }
 
 
