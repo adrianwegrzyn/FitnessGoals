@@ -34,14 +34,14 @@ export default class App extends Component<> {
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.toolbar}>
-                    <Icon.Button style={{flex: 1, margin: 5}} name="menu"
-                                 backgroundColor="#FFFFFF" color="black"
-                                 size={30} onPress={this.goToDrawer}/>
-                    <View style={{flex: 5, alignItems: 'center'}}>
-                        <Text style={styles.nameToolBar}>Fitness Goals</Text>
-                    </View>
-                </View>
+                {/*<View style={styles.toolbar}>*/}
+                    {/*<Icon.Button style={{flex: 1, margin: 5}} name="menu"*/}
+                                 {/*backgroundColor="#FFFFFF" color="black"*/}
+                                 {/*size={30} onPress={this.goToDrawer}/>*/}
+                    {/*<View style={{flex: 5, alignItems: 'center'}}>*/}
+                        {/*<Text style={styles.nameToolBar}>Fitness Goals</Text>*/}
+                    {/*</View>*/}
+                {/*</View>*/}
 
                 {/*1*/}
 
@@ -79,7 +79,6 @@ export default class App extends Component<> {
                     </View>
 
                     {/*3*/}
-                    {/**/}
 
                     <View style={styles.rowMenu}>
                         <TouchableOpacity onPress={() => this.newWindow('Chat')} style={styles.itemTouchableOpacity}>
@@ -108,7 +107,7 @@ export default class App extends Component<> {
                             <Icon name='content-copy' size={80} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Opinie</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.itemTouchableOpacity}>
+                        <TouchableOpacity onPress={() => this.newWindow('Informations')} style={styles.itemTouchableOpacity}>
                             <Icon name='information-variant' size={80} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Informacje</Text>
                         </TouchableOpacity>

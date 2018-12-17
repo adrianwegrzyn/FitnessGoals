@@ -7,13 +7,14 @@ import Drawer from './src/Drawer'
 import Chat from './src/chat/components/Chat'
 import ReviewsOptions from './src/reviews/ReviewsOptions'
 import DietReviews from './src/reviews/dietReviews/DietReviews'
-
+import Informations from './src/informations/Informations'
 
 Navigation.registerComponent('App', () => App);
 Navigation.registerComponent('Drawer', () => Drawer);
 Navigation.registerComponent('Chat', () => Chat);
 Navigation.registerComponent('ReviewsOptions', () => ReviewsOptions);
 Navigation.registerComponent('DietReviews', () => DietReviews);
+Navigation.registerComponent('Informations', () => Informations);
 
 
 
@@ -25,13 +26,22 @@ Navigation.events().registerAppLaunchedListener(() => {
     },
     topBar: {
       elevation: 0,
-      visible: false,
-      drawBehind: true,
+      //visible: false,
+      //drawBehind: true,
       animate: false,
       buttonColor: 'white',
       background: {
         color: 'transparent'
-      }
+      },
+      title: {
+        text: 'Fitness Goals',
+        alignment: 'center'
+
+      },
+      rightButtons: {
+        id: 'saveBtn',
+        text: 'Save'
+      },
     }
   });
   Navigation.setRoot({
@@ -65,7 +75,18 @@ Navigation.events().registerAppLaunchedListener(() => {
         }
       },
 
+      navigationButtonPressed({buttonId}) {
+        if (buttonId === 'cancelBtn') {
+          Navigation.dismissModal(this.props.componentId);
+        } else if (buttonId === 'saveBtn') {
+          alert('saveBtn');
+        }
+      }
+
+
     }
 
   });
+
 });
+
