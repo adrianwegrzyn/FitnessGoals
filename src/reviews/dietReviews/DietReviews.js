@@ -126,22 +126,14 @@ export default class ReviewsOptions extends Component<> {
 
         if(this.state.isLoading){
             return(
-                <View>
-                    <ActivityIndicator />
+                <View style={styles.loading}>
+                    <ActivityIndicator size="large" color="#00ff00" />
                 </View>
             )
         }
 
         return (
             <View style={styles.container}>
-                <View style={styles.toolbar}>
-                    <Icon.Button style={{flex: 1, margin: 5}} name="menu"
-                                 backgroundColor="#FFFFFF" color="black"
-                                 size={30} onPress={this.goToDrawer}/>
-                    <View style={{flex: 5, alignItems: 'center'}}>
-                        <Text style={styles.nameToolBar}>Fitness Goals</Text>
-                    </View>
-                </View>
                 <View style={styles.content}>
                     <ScrollView refreshControl={
                         <RefreshControl
@@ -239,6 +231,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         borderRadius: 5,
     },
+    loading: {
+        flex:1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
 
 
 });

@@ -26,13 +26,22 @@ Navigation.events().registerAppLaunchedListener(() => {
     },
     topBar: {
       elevation: 0,
-      visible: false,
-      drawBehind: true,
+      //visible: false,
+      //drawBehind: true,
       animate: false,
       buttonColor: 'white',
       background: {
         color: 'transparent'
-      }
+      },
+      title: {
+        text: 'Fitness Goals',
+        alignment: 'center'
+
+      },
+      rightButtons: {
+        id: 'saveBtn',
+        text: 'Save'
+      },
     }
   });
   Navigation.setRoot({
@@ -66,7 +75,18 @@ Navigation.events().registerAppLaunchedListener(() => {
         }
       },
 
+      navigationButtonPressed({buttonId}) {
+        if (buttonId === 'cancelBtn') {
+          Navigation.dismissModal(this.props.componentId);
+        } else if (buttonId === 'saveBtn') {
+          alert('saveBtn');
+        }
+      }
+
+
     }
 
   });
+
 });
+
