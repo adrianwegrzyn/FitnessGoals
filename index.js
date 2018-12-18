@@ -8,6 +8,13 @@ import Chat from './src/chat/components/Chat'
 import ReviewsOptions from './src/reviews/ReviewsOptions'
 import DietReviews from './src/reviews/dietReviews/DietReviews'
 import Informations from './src/informations/Informations'
+import TodayTraining from './src/trainingPlan/TodayTraining'
+import WeekTraining from './src/trainingPlan/WeekTraining'
+import DietOptions from './src/diet/DietOptions'
+import DietWeek from './src/diet/dietWeek/DietWeek'
+import SelectedDay from './src/diet/dietWeek/SelectedDay'
+import ShoppingList from './src/diet/shoppingList/ShoppingList'
+
 
 Navigation.registerComponent('App', () => App);
 Navigation.registerComponent('Drawer', () => Drawer);
@@ -15,6 +22,13 @@ Navigation.registerComponent('Chat', () => Chat);
 Navigation.registerComponent('ReviewsOptions', () => ReviewsOptions);
 Navigation.registerComponent('DietReviews', () => DietReviews);
 Navigation.registerComponent('Informations', () => Informations);
+Navigation.registerComponent('TodayTraining', () => TodayTraining);
+Navigation.registerComponent('WeekTraining', () => WeekTraining);
+Navigation.registerComponent('DietOptions', () => DietOptions);
+Navigation.registerComponent('DietWeek', () => DietWeek);
+Navigation.registerComponent('SelectedDay', () => SelectedDay);
+Navigation.registerComponent('ShoppingList', () => ShoppingList);
+
 
 
 
@@ -31,17 +45,22 @@ Navigation.events().registerAppLaunchedListener(() => {
       animate: false,
       buttonColor: 'white',
       background: {
-        color: 'transparent'
+        color: '#3B5998'
       },
       title: {
-        text: 'Fitness Goals',
-        alignment: 'center'
+        text: 'FitnessGoals',
+        alignment: 'center',
+        color: 'white'
+
 
       },
-      rightButtons: {
-        id: 'saveBtn',
-        text: 'Save'
-      },
+      // rightButtons: {
+      //   id: 'saveBtn',
+      //   text: 'Save'
+      // },
+    },
+    statusBar: {
+      backgroundColor: '#192F6A'
     }
   });
   Navigation.setRoot({
@@ -75,13 +94,13 @@ Navigation.events().registerAppLaunchedListener(() => {
         }
       },
 
-      navigationButtonPressed({buttonId}) {
-        if (buttonId === 'cancelBtn') {
-          Navigation.dismissModal(this.props.componentId);
-        } else if (buttonId === 'saveBtn') {
-          alert('saveBtn');
-        }
-      }
+      // navigationButtonPressed({buttonId}) {
+      //   if (buttonId === 'cancelBtn') {
+      //     Navigation.dismissModal(this.props.componentId);
+      //   } else if (buttonId === 'saveBtn') {
+      //     alert('saveBtn');
+      //   }
+      // }
 
 
     }

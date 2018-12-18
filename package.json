@@ -16,7 +16,8 @@
     "react-native-navigation": "^2.1.2",
     "react-native-progress": "^3.5.0",
     "react-native-splash-screen": "3.0.6",
-    "react-native-vector-icons": "^6.1.0"
+    "react-native-vector-icons": "^6.1.0",
+    "lodash": "latest"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
