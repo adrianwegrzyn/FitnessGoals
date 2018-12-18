@@ -3,25 +3,22 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Navigation} from 'react-native-navigation';
-import LinearGradient from 'react-native-linear-gradient';
-
-
 
 export default class App extends Component<> {
+
+    constructor() {
+        super();
+        this.state = {
+            buttonsArray: [[['TodayTraining', 'run', 'Plan treningowy'], ['DietOptions', 'bowl', 'Dieta'], ['', 'newspaper', 'Artykuły sportowe']],
+                [['', 'chart-line', 'Historia postępów'], ['', 'basket', 'Zakupy'], ['', 'lead-pencil', 'Pomiary']],
+                [['Chat', 'wechat', 'Czat'], ['', 'calculator', 'Kalkulator BMI'], ['', 'silverware-variant', 'Zapotrzebowanie kaloryczne']],
+                [['', 'map-marker-minus', 'Mapa biegów'], ['ReviewsOptions', 'content-copy', 'Opinie'], ['Informations', 'information-variant', 'Informacje']]]
+        }
+    }
 
     componentDidMount() {
         SplashScreen.hide();
     }
-
-    goToDrawer = () => {
-        Navigation.mergeOptions('drawerId', {
-            sideMenu: {
-                left: {
-                    visible: true
-                }
-            }
-        })
-    };
 
     newWindow = (window) => {
         Navigation.push(this.props.componentId, {
@@ -32,92 +29,30 @@ export default class App extends Component<> {
     };
 
     render() {
+
+        let rowsButtons = [];
+        for (let i = 0; i < 4; i++) {
+            let row = [];
+            for (let j = 0; j < 3; j++) {
+                row.push(
+                    <TouchableOpacity key={this.state.buttonsArray[i][j]}
+                                      onPress={() => this.newWindow(this.state.buttonsArray[i][j][0])}
+                                      style={styles.itemTouchableOpacity}>
+                        <Icon name={this.state.buttonsArray[i][j][1]} size={50} color='#000000'/>
+                        <Text style={styles.textTouchableOpacity}>{this.state.buttonsArray[i][j][2]}</Text>
+                    </TouchableOpacity>
+                )
+            }
+            rowsButtons.push(<View key={i} style={styles.rowMenu}>{row}</View>)
+        }
         return (
             <View style={styles.container}>
-                {/*<LinearGradient colors={['#ffffff', '#e8fff3', '#b4efce']} style={styles.linearGradient}>*/}
-
-                {/*<LinearGradient*/}
-                    {/*start={{x: 0.0, y: 0.25}} end={{x: 0.7, y: 2.0}}*/}
-                    {/*locations={[0,0.5,0.9]}*/}
-                    {/*colors={['#ff1012', '#23ef00', '#060dc3']}*/}
-                    {/*style={styles.linearGradient}>*/}
-
-                {/*1*/}
-
-                <View style={styles.content}>
-                    <View style={styles.rowMenu}>
-                        <TouchableOpacity onPress={() => this.newWindow('TodayTraining')} style={styles.itemTouchableOpacity}>
-                            <Icon name='run' size={50} color='#000000'/>
-                            <Text style={styles.textTouchableOpacity}>Plan treningowy</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => this.newWindow('DietOptions')} style={styles.itemTouchableOpacity}>
-                            <Icon name='bowl' size={50} color='#000000'/>
-                            <Text style={styles.textTouchableOpacity}>Dieta</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='newspaper' size={50} color='#000000'/>
-                            <Text style={styles.textTouchableOpacity}>Artykuły sportowe</Text>
-                        </TouchableOpacity>
-                    </View>
-
-                    {/*2*/}
-
-                    <View style={styles.rowMenu}>
-                        <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='chart-line' size={50} color='#000000'/>
-                            <Text style={styles.textTouchableOpacity}>Historia postępów</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='basket' size={50} color='#000000'/>
-                            <Text style={styles.textTouchableOpacity}>Zakupy</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='lead-pencil' size={50} color='#000000'/>
-                            <Text style={styles.textTouchableOpacity}>Pomiary</Text>
-                        </TouchableOpacity>
-                    </View>
-
-                    {/*3*/}
-
-                    <View style={styles.rowMenu}>
-                        <TouchableOpacity onPress={() => this.newWindow('Chat')} style={styles.itemTouchableOpacity}>
-                            <Icon name='wechat' size={50} color='#000000'/>
-                            <Text style={styles.textTouchableOpacity}>Czat</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='calculator' size={50} color='#000000'/>
-                            <Text style={styles.textTouchableOpacity}>Kalkulator BMI</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='silverware-variant' size={50} color='#000000'/>
-                            <Text style={styles.textTouchableOpacity}>Zapotrzebowanie kaloryczne</Text>
-                        </TouchableOpacity>
-                    </View>
-
-                    {/*4*/}
-
-                    <View style={styles.rowMenu}>
-                        <TouchableOpacity style={styles.itemTouchableOpacity}>
-                            <Icon name='map-marker-minus' size={50} color='#000000'/>
-                            <Text style={styles.textTouchableOpacity}>Mapa biegów</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => this.newWindow('ReviewsOptions')}
-                                          style={styles.itemTouchableOpacity}>
-                            <Icon name='content-copy' size={50} color='#000000'/>
-                            <Text style={styles.textTouchableOpacity}>Opinie</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => this.newWindow('Informations')} style={styles.itemTouchableOpacity}>
-                            <Icon name='information-variant' size={50} color='#000000'/>
-                            <Text style={styles.textTouchableOpacity}>Informacje</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.info}>
-                            <Text style={styles.infoText}>
-                                Zacznij  już dziś !
-                            </Text>
-                    </View>
+                {rowsButtons}
+                <View style={styles.info}>
+                    <Text style={styles.infoText}>
+                        Zacznij już dziś !
+                    </Text>
                 </View>
-
             </View>
         );
     }
@@ -145,7 +80,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderColor: '#000000',
         borderWidth: 2,
-        borderRadius:10,
+        borderRadius: 10,
         margin: 9,
         padding: 3
     },
@@ -171,7 +106,4 @@ const styles = StyleSheet.create({
     linearGradient: {
         flex: 1,
     },
-
-
-
 });
