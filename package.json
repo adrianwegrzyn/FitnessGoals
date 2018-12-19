@@ -8,16 +8,18 @@
   },
   "dependencies": {
     "firebase": "4.8.1",
+    "lodash": "latest",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
     "react-native-elements": "^0.19.1",
     "react-native-gifted-chat": "0.3.0",
     "react-native-linear-gradient": "^2.5.3",
+    "react-native-maps": "^0.22.1",
     "react-native-navigation": "^2.1.2",
     "react-native-progress": "^3.5.0",
     "react-native-splash-screen": "3.0.6",
     "react-native-vector-icons": "^6.1.0",
-    "lodash": "latest"
+    "round-to": "^3.0.0"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",

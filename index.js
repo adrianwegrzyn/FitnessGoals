@@ -14,6 +14,9 @@ import DietOptions from './src/diet/DietOptions'
 import DietWeek from './src/diet/dietWeek/DietWeek'
 import SelectedDay from './src/diet/dietWeek/SelectedDay'
 import ShoppingList from './src/diet/shoppingList/ShoppingList'
+import RunMap from './src/map/RunMap'
+import CalculatorBmi from './src/calculatorBmi/CalculatorBmi'
+import CaloricDemand from './src/caloricDemand/CaloricDemand'
 
 
 Navigation.registerComponent('App', () => App);
@@ -28,6 +31,10 @@ Navigation.registerComponent('DietOptions', () => DietOptions);
 Navigation.registerComponent('DietWeek', () => DietWeek);
 Navigation.registerComponent('SelectedDay', () => SelectedDay);
 Navigation.registerComponent('ShoppingList', () => ShoppingList);
+Navigation.registerComponent('RunMap', () => RunMap);
+Navigation.registerComponent('CalculatorBmi', () => CalculatorBmi);
+Navigation.registerComponent('CaloricDemand', () => CaloricDemand);
+
 
 
 
