@@ -84,11 +84,11 @@ export default class App extends Component<> {
                             <Icon name='wechat' size={50} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Czat</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.itemTouchableOpacity}>
+                        <TouchableOpacity onPress={() => this.newWindow('CalculatorBmi')} style={styles.itemTouchableOpacity}>
                             <Icon name='calculator' size={50} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Kalkulator BMI</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.itemTouchableOpacity}>
+                        <TouchableOpacity onPress={() => this.newWindow('CaloricDemand')} style={styles.itemTouchableOpacity}>
                             <Icon name='silverware-variant' size={50} color='#000000'/>
                             <Text style={styles.textTouchableOpacity}>Zapotrzebowanie kaloryczne</Text>
                         </TouchableOpacity>
