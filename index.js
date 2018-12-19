@@ -14,6 +14,7 @@ import DietOptions from './src/diet/DietOptions'
 import DietWeek from './src/diet/dietWeek/DietWeek'
 import SelectedDay from './src/diet/dietWeek/SelectedDay'
 import ShoppingList from './src/diet/shoppingList/ShoppingList'
+import RunMap from './src/map/RunMap'
 
 
 Navigation.registerComponent('App', () => App);
@@ -28,6 +29,7 @@ Navigation.registerComponent('DietOptions', () => DietOptions);
 Navigation.registerComponent('DietWeek', () => DietWeek);
 Navigation.registerComponent('SelectedDay', () => SelectedDay);
 Navigation.registerComponent('ShoppingList', () => ShoppingList);
+Navigation.registerComponent('RunMap', () => RunMap);
 
 
 
