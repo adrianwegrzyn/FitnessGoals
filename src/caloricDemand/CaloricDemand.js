@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity, TextInput, Picker} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity, TextInput, Picker, ScrollView} from 'react-native';
 import {CheckBox} from 'react-native-elements'
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -23,7 +23,7 @@ export default class CaloricDemand extends Component<> {
 
 
     checkedMan = () => {
-        if(!this.state.checkedMan){
+        if (!this.state.checkedMan) {
             this.state.agee = 5;
         }
         this.setState({
@@ -32,7 +32,7 @@ export default class CaloricDemand extends Component<> {
 
     };
     checkedWoman = () => {
-        if(!this.state.checkedWoman){
+        if (!this.state.checkedWoman) {
             this.state.agee = -161;
         }
         this.setState({
@@ -41,24 +41,8 @@ export default class CaloricDemand extends Component<> {
 
     };
 
-    sex = () => {
-        // this.setState({refreshing: true});
-        //
-        // if (this.state.checkedMan) {
-        //     this.setState({
-        //         agee: 5
-        //     });
-        // } else {
-        //     this.setState({
-        //         agee: -161
-        //     });
-        // }
-        // this.setState({refreshing: false});
-
-    };
 
     calculate = () => {
-        this.sex();
 
         if (this.state.weight === '') {
             this.setState({
@@ -73,7 +57,6 @@ export default class CaloricDemand extends Component<> {
                 dataBmr: 'Proszę podać wiek'
             });
         } else {
-            this.sex();
             this.setState({
                 dataBmr: roundTo((this.state.weight * 9.99) + (this.state.growth * 6.25) - (this.state.age * 4.92) + this.state.agee, 2) + ' kcal'
             });
@@ -111,91 +94,93 @@ export default class CaloricDemand extends Component<> {
 
     render() {
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
 
-                <Text style={styles.title}>Twoje zapotrzebowanie kaloryczne (BMR)</Text>
-                <View style={styles.sex}>
-                    <Text style={styles.item}>Płeć</Text>
-                    <CheckBox
-                        onPress={this.checkedWoman}
-                        title='Kobieta'
-                        checked={this.state.checkedWoman}
+                <View style={{flex: 10}}>
+                    <Text style={styles.title}>Twoje zapotrzebowanie kaloryczne (BMR)</Text>
+                    <View style={styles.sex}>
+                        <Text style={styles.item}>Płeć</Text>
+                        <CheckBox
+                            onPress={this.checkedWoman}
+                            title='Kobieta'
+                            checked={this.state.checkedWoman}
 
-                    />
-                    <CheckBox
-                        onPress={this.checkedMan}
-                        title='Mężczyzna'
-                        checked={this.state.checkedMan}
-                    />
+                        />
+                        <CheckBox
+                            onPress={this.checkedMan}
+                            title='Mężczyzna'
+                            checked={this.state.checkedMan}
+                        />
+                    </View>
+
+                    <View style={styles.weight}>
+                        <Text style={styles.item}>Waga</Text>
+
+                        <TextInput
+                            multiline={true}
+                            numberOfLines={1}
+                            style={styles.inputTextWeight}
+                            onChangeText={(weight) => this.setState({weight})}
+                            value={this.state.weight}
+                            keyboardType='number-pad'
+                            textAlign={'center'}
+                        />
+                        <Text style={styles.item}>kg</Text>
+                    </View>
+
+                    <View style={styles.weight}>
+                        <Text style={styles.item}>Wzrost</Text>
+
+                        <TextInput
+                            multiline={true}
+                            numberOfLines={1}
+                            style={styles.inputTextGrowth}
+                            onChangeText={(growth) => this.setState({growth})}
+                            value={this.state.growth}
+                            keyboardType='number-pad'
+                            textAlign={'center'}
+                        />
+                        <Text style={styles.item}>cm</Text>
+                    </View>
+
+                    <View style={styles.weight}>
+                        <Text style={styles.item}>Wiek</Text>
+
+                        <TextInput
+                            multiline={true}
+                            numberOfLines={1}
+                            style={styles.inputTextAge}
+                            onChangeText={(age) => this.setState({age})}
+                            value={this.state.age}
+                            keyboardType='number-pad'
+                            textAlign={'center'}
+                        />
+                        <Text style={styles.item}>lat</Text>
+                    </View>
+
+                    <Picker
+                        selectedValue={this.state.physicalActivity}
+                        style={{height: 50, width: '100%'}}
+                        onValueChange={(itemValue, itemIndex) => this.setState({physicalActivity: itemValue})}>
+                        <Picker.Item label='Wybierz rodzaj aktywności fizycznej' value='0'/>
+                        <Picker.Item label="Znikoma (brak ćwiczeń, praca siedząca, szkoła)" value="1"/>
+                        <Picker.Item label="Bardzo miała (ćwiczenia raz na tydzień)" value="2"/>
+                        <Picker.Item label="Umiarkowana (ćwiczenia dwa razy w tygodniu)" value="3"/>
+                        <Picker.Item label="Duża (dość ciężki trening kilka razy w tygodniu)" value="4"/>
+                        <Picker.Item label="Bardzo duża (przynajmniej 4 treningi w tygodniu)" value="5"/>
+                    </Picker>
+
+                    <Picker
+                        selectedValue={this.state.planning}
+                        style={{height: 50, width: '100%'}}
+                        onValueChange={(itemValue, itemIndex) => this.setState({planning: itemValue})}>
+                        <Picker.Item label='Wybierz co chcesz osiągnąć' value='0'/>
+                        <Picker.Item label="chcę przytyć" value="1"/>
+                        <Picker.Item label="chcę utrzymać wagę" value="2"/>
+                        <Picker.Item label="chcę schudnąć" value="3"/>
+
+                    </Picker>
                 </View>
-
-                <View style={styles.weight}>
-                    <Text style={styles.item}>Waga</Text>
-
-                    <TextInput
-                        multiline={true}
-                        numberOfLines={1}
-                        style={styles.inputTextWeight}
-                        onChangeText={(weight) => this.setState({weight})}
-                        value={this.state.weight}
-                        keyboardType='number-pad'
-                        textAlign={'center'}
-                    />
-                    <Text style={styles.item}>kg</Text>
-                </View>
-
-                <View style={styles.weight}>
-                    <Text style={styles.item}>Wzrost</Text>
-
-                    <TextInput
-                        multiline={true}
-                        numberOfLines={1}
-                        style={styles.inputTextGrowth}
-                        onChangeText={(growth) => this.setState({growth})}
-                        value={this.state.growth}
-                        keyboardType='number-pad'
-                        textAlign={'center'}
-                    />
-                    <Text style={styles.item}>cm</Text>
-                </View>
-
-                <View style={styles.weight}>
-                    <Text style={styles.item}>Wiek</Text>
-
-                    <TextInput
-                        multiline={true}
-                        numberOfLines={1}
-                        style={styles.inputTextAge}
-                        onChangeText={(age) => this.setState({age})}
-                        value={this.state.age}
-                        keyboardType='number-pad'
-                        textAlign={'center'}
-                    />
-                    <Text style={styles.item}>lat</Text>
-                </View>
-
-                <Picker
-                    selectedValue={this.state.physicalActivity}
-                    style={{height: 50, width: '100%'}}
-                    onValueChange={(itemValue, itemIndex) => this.setState({physicalActivity: itemValue})}>
-                    <Picker.Item label='Wybierz rodzaj aktywności fizycznej' value='0'/>
-                    <Picker.Item label="Znikoma (brak ćwiczeń, praca siedząca, szkoła)" value="1"/>
-                    <Picker.Item label="Bardzo miała (ćwiczenia raz na tydzień)" value="2"/>
-                    <Picker.Item label="Umiarkowana (ćwiczenia dwa razy w tygodniu)" value="3"/>
-                    <Picker.Item label="Duża (dość ciężki trening kilka razy w tygodniu)" value="4"/>
-                    <Picker.Item label="Bardzo duża (przynajmniej 4 treningi w tygodniu)" value="5"/>
-                </Picker>
-
-                <Picker
-                    selectedValue={this.state.planning}
-                    style={{height: 50, width: '100%'}}
-                    onValueChange={(itemValue, itemIndex) => this.setState({planning: itemValue})}>
-                    <Picker.Item label='Wybierz co chcesz osiągnąć' value='0'/>
-                    <Picker.Item label="chcę przytyć" value="1"/>
-                    <Picker.Item label="chcę utrzymać wagę" value="2"/>
-                    <Picker.Item label="chcę schudnąć" value="3"/>
-
-                </Picker>
 
 
                 <View style={styles.buttonMargin}>
@@ -212,12 +197,13 @@ export default class CaloricDemand extends Component<> {
                         </TouchableOpacity>
                     </LinearGradient>
                 </View>
+                <View style={{flex: 2}}>
 
-                <Text style={styles.resultText}>Twoje zapotrzebowanie kaloryczne: </Text>
-                <Text style={styles.result}>{this.state.dataBmr}</Text>
+                    <Text style={styles.resultText}>Twoje zapotrzebowanie kaloryczne: </Text>
+                    <Text style={styles.result}>{this.state.dataBmr}</Text>
+                </View>
 
-
-            </View>
+            </ScrollView>
         );
     }
 }
@@ -240,11 +226,11 @@ const styles = StyleSheet.create({
         color: '#000000',
     },
     buttonMargin: {
-        marginTop: 40,
+        marginTop: 20,
         marginBottom: 5,
         marginLeft: 30,
         marginRight: 30,
-        flex: 0.5,
+        flex: 1,
     },
     buttonWeekPlan: {
         padding: 10,

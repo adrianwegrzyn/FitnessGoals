@@ -1,18 +1,16 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity, TextInput} from 'react-native';
-import { CheckBox } from 'react-native-elements'
+import {StyleSheet, View, Text, TouchableOpacity, TextInput, ScrollView} from 'react-native';
+import {CheckBox} from 'react-native-elements'
 import LinearGradient from 'react-native-linear-gradient';
+
 const roundTo = require('round-to');
-
-
-
 
 
 export default class CalculatorBmi extends Component<> {
     constructor() {
         super();
         this.state = {
-           checkedMan: false,
+            checkedMan: false,
             checkedWoman: false,
             dataBmi: '',
             weight: '',
@@ -42,8 +40,8 @@ export default class CalculatorBmi extends Component<> {
             });
         } else
             this.setState({
-            dataBmi:  roundTo(this.state.weight / (this.state.growth/100 * this.state.growth/100),2)
-        });
+                dataBmi: roundTo(this.state.weight / (this.state.growth / 100 * this.state.growth / 100), 2)
+            });
     }
 
     // componentDidMount() {
@@ -76,51 +74,53 @@ export default class CalculatorBmi extends Component<> {
 
     render() {
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
 
-                <Text style={styles.title}>Wskaźnik masy ciała (BMI)</Text>
-                <View style={styles.sex}>
-                <Text style={styles.item}>Płeć</Text>
-                <CheckBox
-                    onPress={this.checkedWoman}
-                    title='Kobieta'
-                    checked={this.state.checkedWoman}
-                />
-                <CheckBox
-                    onPress={this.checkedMan}
-                    title='Mężczyzna'
-                    checked={this.state.checkedMan}
-                />
-                </View>
+                <View style={{flex: 8}}>
+                    <Text style={styles.title}>Wskaźnik masy ciała (BMI)</Text>
+                    <View style={styles.sex}>
+                        <Text style={styles.item}>Płeć</Text>
+                        <CheckBox
+                            onPress={this.checkedWoman}
+                            title='Kobieta'
+                            checked={this.state.checkedWoman}
+                        />
+                        <CheckBox
+                            onPress={this.checkedMan}
+                            title='Mężczyzna'
+                            checked={this.state.checkedMan}
+                        />
+                    </View>
 
-                <View style={styles.weight}>
-                <Text style={styles.item}>Waga</Text>
+                    <View style={styles.weight}>
+                        <Text style={styles.item}>Waga</Text>
 
-                <TextInput
-                    multiline={true}
-                    numberOfLines={1}
-                    style={styles.inputTextWeight}
-                    onChangeText={(weight) => this.setState({weight})}
-                    value={this.state.weight}
-                    keyboardType='number-pad'
-                    textAlign={'center'}
-                />
-                    <Text style={styles.item}>kg</Text>
-                </View>
+                        <TextInput
+                            multiline={true}
+                            numberOfLines={1}
+                            style={styles.inputTextWeight}
+                            onChangeText={(weight) => this.setState({weight})}
+                            value={this.state.weight}
+                            keyboardType='number-pad'
+                            textAlign={'center'}
+                        />
+                        <Text style={styles.item}>kg</Text>
+                    </View>
 
-                <View style={styles.weight}>
-                    <Text style={styles.item}>Wzrost</Text>
+                    <View style={styles.weight}>
+                        <Text style={styles.item}>Wzrost</Text>
 
-                    <TextInput
-                        multiline={true}
-                        numberOfLines={1}
-                        style={styles.inputTextGrowth}
-                        onChangeText={(growth) => this.setState({growth})}
-                        value={this.state.growth}
-                        keyboardType='number-pad'
-                        textAlign={'center'}
-                    />
-                    <Text style={styles.item}>cm</Text>
+                        <TextInput
+                            multiline={true}
+                            numberOfLines={1}
+                            style={styles.inputTextGrowth}
+                            onChangeText={(growth) => this.setState({growth})}
+                            value={this.state.growth}
+                            keyboardType='number-pad'
+                            textAlign={'center'}
+                        />
+                        <Text style={styles.item}>cm</Text>
+                    </View>
                 </View>
 
                 <View style={styles.buttonMargin}>
@@ -137,33 +137,36 @@ export default class CalculatorBmi extends Component<> {
                         </TouchableOpacity>
                     </LinearGradient>
                 </View>
+                <View style={{flex: 8}}>
 
-                <Text style={styles.resultText}>Twoje BMI wynosi: </Text>
-                <Text style={styles.result}>{this.state.dataBmi}</Text>
-                <View>
-                <Text style={styles.description}>
-                    Normy wskaźnika BMI zostały sporządzone przez Światową Organizację Zdrowia (ang. WHO). Najczęściej występującym typem klasyfikacji wyników jest kategoryzacja rozszerzona która prezentuje się w poniższy sposób: {"\n"} {"\n"}
+                    <Text style={styles.resultText}>Twoje BMI wynosi: </Text>
+                    <Text style={styles.result}>{this.state.dataBmi}</Text>
+                    <View>
+                        <Text style={styles.description}>
+                            Normy wskaźnika BMI zostały sporządzone przez Światową Organizację Zdrowia (ang. WHO).
+                            Najczęściej występującym typem klasyfikacji wyników jest kategoryzacja rozszerzona która
+                            prezentuje się w poniższy sposób: {"\n"} {"\n"}
 
-                    - poniżej 16,0 – wygłodzenie {"\n"}
+                            - poniżej 16,0 – wygłodzenie {"\n"}
 
-                    - 16,0–16,99 – wychudzenie {"\n"}
+                            - 16,0–16,99 – wychudzenie {"\n"}
 
-                    - 17,0–18,49 – niedowagę {"\n"}
+                            - 17,0–18,49 – niedowagę {"\n"}
 
-                    - 18,5–24,99 – wartość prawidłową {"\n"}
+                            - 18,5–24,99 – wartość prawidłową {"\n"}
 
-                    - 25,0–29,99 – nadwagę {"\n"}
+                            - 25,0–29,99 – nadwagę {"\n"}
 
-                    - 30,0–34,99 – I stopień otyłości {"\n"}
+                            - 30,0–34,99 – I stopień otyłości {"\n"}
 
-                    - 35,0–39,99 – II stopień otyłości {"\n"}
+                            - 35,0–39,99 – II stopień otyłości {"\n"}
 
-                    - powyzej 40,0 – III stopień otyłości
-                </Text>
+                            - powyzej 40,0 – III stopień otyłości
+                        </Text>
+                    </View>
                 </View>
 
-
-            </View>
+            </ScrollView>
         );
     }
 }
@@ -189,7 +192,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginLeft: 30,
         marginRight: 30,
-        flex: 0.7,
+        flex: 2,
     },
     buttonWeekPlan: {
         padding: 10,
@@ -210,7 +213,7 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderWidth: 1,
         fontSize: 14,
-        marginLeft:11,
+        marginLeft: 11,
         marginRight: 10,
         marginTop: 10,
         borderLeftWidth: 0,
@@ -224,7 +227,7 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderWidth: 1,
         fontSize: 14,
-        marginLeft:0,
+        marginLeft: 0,
         marginRight: 10,
         marginTop: 10,
         borderLeftWidth: 0,
