@@ -15,6 +15,12 @@
       android:allowBackup="false"
       android:theme="@style/AppTheme">
 
+        <receiver
+            android:process=":remote"
+            android:name="com.github.wumke.RNLocalNotifications.AlarmReceiver"
+            android:exported="true">
+
+        </receiver>
 
 
         <activity
