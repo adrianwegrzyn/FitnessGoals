@@ -4,6 +4,7 @@ import android.app.Application;
 import com.facebook.react.ReactApplication;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
+import com.github.wumke.RNLocalNotifications.RNLocalNotificationsPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.facebook.react.ReactNativeHost;
@@ -14,8 +15,6 @@ import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
 import com.BV.LinearGradient.LinearGradientPackage;
-
-
 
 
 import java.util.Arrays;
@@ -58,7 +57,9 @@ protected List<ReactPackage> getPackages() {
             new MapsPackage(),
             new LinearGradientPackage(),
             new VectorIconsPackage(),
-            new SplashScreenReactPackage()
+            new SplashScreenReactPackage(),
+            new LinearGradientPackage(),
+            new RNLocalNotificationsPackage()
     );
 }
 

@@ -1,5 +1,7 @@
 package com.quiz;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.os.Bundle;
 
 import com.reactnativenavigation.NavigationActivity;
@@ -13,4 +15,11 @@ public class MainActivity extends NavigationActivity {
 
 
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        nMgr.cancelAll();
+    }
+
 }
