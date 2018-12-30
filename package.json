@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "firebase": "4.8.1",
+    "haversine": "^1.1.0",
     "lodash": "latest",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",

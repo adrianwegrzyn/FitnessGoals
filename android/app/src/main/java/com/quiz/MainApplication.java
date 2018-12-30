@@ -16,6 +16,8 @@ import com.reactnativenavigation.react.ReactGateway;
 import com.BV.LinearGradient.LinearGradientPackage;
 
 
+
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -56,8 +58,7 @@ protected List<ReactPackage> getPackages() {
             new MapsPackage(),
             new LinearGradientPackage(),
             new VectorIconsPackage(),
-            new SplashScreenReactPackage(),
-            new LinearGradientPackage()
+            new SplashScreenReactPackage()
     );
 }
 

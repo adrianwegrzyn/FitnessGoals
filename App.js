@@ -46,6 +46,8 @@ export default class App extends Component<> {
             }
             rowsButtons.push(<View key={i} style={styles.rowMenu}>{row}</View>)
         }
+
+
         return (
             <View style={styles.container}>
                 <LinearGradient colors={['#dfe9f3', '#ffffff']} style={styles.linearGradient}>
