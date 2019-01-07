@@ -17,6 +17,7 @@ import ShoppingList from './src/diet/shoppingList/ShoppingList'
 import RunMap from './src/map/RunMap'
 import CalculatorBmi from './src/calculatorBmi/CalculatorBmi'
 import CaloricDemand from './src/caloricDemand/CaloricDemand'
+import Measurement from './src/measurement/Measurement'
 
 
 Navigation.registerComponent('App', () => App);
@@ -34,6 +35,7 @@ Navigation.registerComponent('ShoppingList', () => ShoppingList);
 Navigation.registerComponent('RunMap', () => RunMap);
 Navigation.registerComponent('CalculatorBmi', () => CalculatorBmi);
 Navigation.registerComponent('CaloricDemand', () => CaloricDemand);
+Navigation.registerComponent('Measurement', () => Measurement);
 
 
 
