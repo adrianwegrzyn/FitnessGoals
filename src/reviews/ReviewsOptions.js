@@ -18,7 +18,7 @@ export default class ReviewsOptions extends Component<> {
         return (
             <View style={styles.container}>
 
-                    <TouchableOpacity  style={styles.iconCoachBox}>
+                    <TouchableOpacity onPress={() => this.newWindow('TrainerReviews')} style={styles.iconCoachBox}>
                         <Icon name='account-outline' size={150} color='#000000'/>
                         <Text style={styles.textIcon}>Trenerzy</Text>
                     </TouchableOpacity>

@@ -18,7 +18,7 @@ export default class TodayTraining extends Component<> {
     }
 
     componentDidMount() {
-        fetch("https://trenerprestonalny.herokuapp.com/opionion/trainer/show?fbclid=IwAR2yOdT5gfY3YMhQ-pMALhiGw-5O-o9TDTNBd_fTe8fl4FYj3wuia9qlkyY")
+        fetch("https://applicationtrainer.herokuapp.com/exercises/users//take/1:2018-12-21:2018-12-22")
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({
@@ -48,10 +48,10 @@ export default class TodayTraining extends Component<> {
 
         let rowsExercise = [];
 
-        for (let i = 0; i < this.state.dataTodayPlan.length; i++) {
+        for (let i = 0; i < this.state.dataTodayPlan[0].exercise.length; i++) {
             rowsExercise.push(
                 <Text key={i} style={styles.exerciseListText}>
-                    {this.state.dataTodayPlan[i].name}
+                    - {this.state.dataTodayPlan[0].exercise[i].repetitions} {this.state.dataTodayPlan[0].exercise[i].nameExercise} x {this.state.dataTodayPlan[0].exercise[i].series}
                 </Text>
             )
         }
