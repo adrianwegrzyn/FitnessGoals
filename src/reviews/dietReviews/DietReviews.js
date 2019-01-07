@@ -10,7 +10,6 @@ import {
     TouchableOpacity,
     TextInput
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 
 
@@ -26,7 +25,7 @@ export default class ReviewsOptions extends Component<> {
     }
 
     componentDidMount() {
-        fetch("https://trenerprestonalny.herokuapp.com/opionion/trainer/show?fbclid=IwAR2yOdT5gfY3YMhQ-pMALhiGw-5O-o9TDTNBd_fTe8fl4FYj3wuia9qlkyY")
+        fetch("https://applicationtrainer.herokuapp.com/opinion/diet/show")
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({
@@ -45,7 +44,7 @@ export default class ReviewsOptions extends Component<> {
     };
 
     fetchData() {
-        return fetch("https://trenerprestonalny.herokuapp.com/opionion/trainer/show?fbclid=IwAR2yOdT5gfY3YMhQ-pMALhiGw-5O-o9TDTNBd_fTe8fl4FYj3wuia9qlkyY")
+        return fetch("https://applicationtrainer.herokuapp.com/opinion/diet/show")
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({
@@ -56,7 +55,7 @@ export default class ReviewsOptions extends Component<> {
     }
 
     sendResult = () => {
-        fetch('https://trenerprestonalny.herokuapp.com/opionion/trainer/send', {
+        fetch('https://applicationtrainer.herokuapp.com/opinion/diet/send', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -77,7 +76,7 @@ export default class ReviewsOptions extends Component<> {
     formatDate() {
         var today = new Date();
         var dd = today.getDate();
-        var mm = today.getMonth() + 1; //January is 0!
+        var mm = today.getMonth() + 1;
         var yyyy = today.getFullYear();
 
         if (dd < 10) {

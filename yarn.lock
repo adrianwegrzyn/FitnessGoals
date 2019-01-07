@@ -5258,11 +5258,6 @@ react-lifecycles-compat@2.0.0:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-2.0.0.tgz#71d9c4cde47114c4102454f76da055c2bc48c948"
   integrity sha512-txfpPCQYiazVdcbMRhatqWKcAxJweUu2wDXvts5/7Wyp6+Y9cHojqXHsLPEckzutfHlxZhG8Oiundbmp8Fd6eQ==
 
-react-native-android-local-notification@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-android-local-notification/-/react-native-android-local-notification-1.1.0.tgz#ccb8fc1ef6823f5e7ef2a1cc97a36111ba9e7ef3"
-  integrity sha512-7Mz5pYRjvwMfjPc5D7aOGROnUPYsMgEtHL2fqRXYpQcq9oHLuq9RoONoGlq7Grzw+KPp5Fblf6RXWBsw8m/8aQ==
-
 react-native-communications@2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-native-communications/-/react-native-communications-2.2.1.tgz#7883b56b20a002eeb790c113f8616ea8692ca795"
@@ -5315,6 +5310,11 @@ react-native-linear-gradient@^2.5.3:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.3.tgz#d90cf19a13fcccfa8bb32025ac40a15ae1b49e99"
   integrity sha512-XdusrOXXlkI+yQpUW7YLeiq9cZiBwkvQX4XEkHPVrJ9H47gsKmdgBwObkZBzBQUP0dKK/Sg6aVpETEis4w43bQ==
+
+react-native-local-notifications@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-local-notifications/-/react-native-local-notifications-1.1.0.tgz#78f6f049e4a5b93f1551478591327d800a90cc3d"
+  integrity sha512-zFfwnIzVZcH9JJoHzFbvAOz0PzpBcPa7/qilQxUe1DpfaQLwQs0M4H+fckcMuD9GW6n+zYYC6lYTHKrWq56Idg==
 
 react-native-maps@^0.22.1:
   version "0.22.1"

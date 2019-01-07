@@ -4,9 +4,11 @@ import {
     Text,
     View,
     ScrollView,
+    TouchableOpacity
 } from 'react-native';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import {Navigation} from 'react-native-navigation';
+import RNLocalNotifications from 'react-native-local-notifications';
 
 
 
@@ -26,7 +28,19 @@ export default class Informations extends Component<> {
     };
 
 
-    render() {
+
+
+
+
+
+
+
+render() {
+
+    RNLocalNotifications.createNotification(1, 'Some text', '2018-12-30 20:55', 'default');
+
+
+    RNLocalNotifications.updateNotification(1, 'Some modifications to text', '2018-12-30 15:55', 'silence');
 
 
         return (
@@ -60,7 +74,12 @@ export default class Informations extends Component<> {
 
                 <Text style={styles.end}>Indywidualne plany treningowe i dietetyczne</Text>
 
-            </ScrollView>
+                    <TouchableOpacity onPress={() => this.notification()}>
+                        <Text> Kliknij mnie</Text>
+                    </TouchableOpacity>
+
+
+                </ScrollView>
             </View>
 
         );
