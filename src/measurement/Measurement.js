@@ -29,15 +29,15 @@ export default class Measurement extends Component<> {
         this.state = {
             weight: '',
             growth: '',
-            neck: 'Kark',
-            waist: 'Talia',
-            arm: 'Ramię',
-            hips: 'Biodra',
-            chest: 'Klatka Piersiowa',
-            thigh: 'Udo',
-            forearm: 'Przedramię',
-            calf: 'Łydka',
-            ankle: 'Staw skokowy'
+            neck: '',
+            waist: '',
+            arm: '',
+            hips: '',
+            chest: '',
+            thigh: '',
+            forearm: '',
+            calf: '',
+            ankle: ''
         }
     }
 
@@ -49,7 +49,7 @@ export default class Measurement extends Component<> {
             <View style={styles.container}>
             <ScrollView>
                 <View style={styles.measumerent}>
-                    <Image style={{width: 180, height: 180}}
+                    <Image style={{width: 110, height: 110}}
                         source={require('../../image/measurement.png')}
                     />
                 </View>
@@ -83,107 +83,135 @@ export default class Measurement extends Component<> {
                 <Text style={styles.title}> Podaj szczegółowe wymiary [cm]</Text>
 
                 <View style={styles.weight}>
-
+                    <Text style={styles.item}>Kark</Text>
+                    <View style={styles.inputAlign}>
                     <TextInput
                         multiline={true}
                         numberOfLines={1}
-                        style={styles.inputTextBody}
+                        style={styles.inputTextWeight}
                         onChangeText={(neck) => this.setState({neck})}
                         value={this.state.neck}
                         keyboardType='number-pad'
                         textAlign={'center'}
                     />
+                    </View>
 
+                </View>
+
+                <View style={styles.weight}>
+                    <Text style={styles.item}>Talia</Text>
 
                     <TextInput
                         multiline={true}
                         numberOfLines={1}
-                        style={styles.inputTextBody}
+                        style={styles.inputTextWeight}
                         onChangeText={(waist) => this.setState({waist})}
                         value={this.state.waist}
                         keyboardType='number-pad'
                         textAlign={'center'}
                     />
+
                 </View>
 
                 <View style={styles.weight}>
+                    <Text style={styles.item}>Ramię</Text>
 
                     <TextInput
                         multiline={true}
                         numberOfLines={1}
-                        style={styles.inputTextBody}
+                        style={styles.inputTextWeight}
                         onChangeText={(arm) => this.setState({arm})}
                         value={this.state.arm}
                         keyboardType='number-pad'
                         textAlign={'center'}
                     />
 
+                </View>
+
+                <View style={styles.weight}>
+                    <Text style={styles.item}>Biodra</Text>
 
                     <TextInput
                         multiline={true}
                         numberOfLines={1}
-                        style={styles.inputTextBody}
+                        style={styles.inputTextWeight}
                         onChangeText={(hips) => this.setState({hips})}
                         value={this.state.hips}
                         keyboardType='number-pad'
                         textAlign={'center'}
                     />
+
                 </View>
 
+
+
                 <View style={styles.weight}>
+                    <Text style={styles.item}>Klatka piersiowa</Text>
 
                     <TextInput
                         multiline={true}
                         numberOfLines={1}
-                        style={styles.inputTextBody}
+                        style={styles.inputTextWeight}
                         onChangeText={(chest) => this.setState({chest})}
                         value={this.state.chest}
                         keyboardType='number-pad'
                         textAlign={'center'}
                     />
 
+                </View>
+
+                <View style={styles.weight}>
+                    <Text style={styles.item}>Udo</Text>
 
                     <TextInput
                         multiline={true}
                         numberOfLines={1}
-                        style={styles.inputTextBody}
+                        style={styles.inputTextWeight}
                         onChangeText={(thigh) => this.setState({thigh})}
                         value={this.state.thigh}
                         keyboardType='number-pad'
                         textAlign={'center'}
                     />
+
                 </View>
 
                 <View style={styles.weight}>
+                    <Text style={styles.item}>Przedramię</Text>
 
                     <TextInput
                         multiline={true}
                         numberOfLines={1}
-                        style={styles.inputTextBody}
+                        style={styles.inputTextWeight}
                         onChangeText={(forearm) => this.setState({forearm})}
                         value={this.state.forearm}
                         keyboardType='number-pad'
                         textAlign={'center'}
                     />
 
+                </View>
+
+                <View style={styles.weight}>
+                    <Text style={styles.item}>Łydka</Text>
 
                     <TextInput
                         multiline={true}
                         numberOfLines={1}
-                        style={styles.inputTextBody}
+                        style={styles.inputTextWeight}
                         onChangeText={(calf) => this.setState({calf})}
                         value={this.state.calf}
                         keyboardType='number-pad'
                         textAlign={'center'}
                     />
+
                 </View>
 
                 <View style={styles.weight}>
+                    <Text style={styles.item}>Staw skokowy</Text>
 
                     <TextInput
                         multiline={true}
                         numberOfLines={1}
-                        style={styles.inputTextBody}
+                        style={styles.inputTextWeight}
                         onChangeText={(ankle) => this.setState({ankle})}
                         value={this.state.ankle}
                         keyboardType='number-pad'
@@ -191,6 +219,13 @@ export default class Measurement extends Component<> {
                     />
 
                 </View>
+
+
+
+
+
+
+
 
                 <View style={styles.buttonMargin}>
                     <LinearGradient
@@ -217,6 +252,7 @@ export default class Measurement extends Component<> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#FFFFFF'
     },
     measumerent: {
         justifyContent: 'center',
@@ -225,12 +261,13 @@ const styles = StyleSheet.create({
     },
     inputTextWeight: {
         height: 35,
-        width: '55%',
+        width: 80,
         borderColor: 'gray',
         borderWidth: 1,
         fontSize: 14,
-        marginLeft: 11,
-        marginRight: 10,
+        // marginLeft: 11,
+        marginRight: 40,
+        justifyContent: 'flex-end',
         marginTop: 10,
         borderLeftWidth: 0,
         borderTopWidth: 0,
@@ -253,6 +290,8 @@ const styles = StyleSheet.create({
     },
     weight: {
         flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginLeft: 20
     },
     item: {
         margin: 15,
@@ -299,6 +338,10 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontFamily: 'OpenSans-Regular',
     },
+    inputAlign: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    }
 
 
 

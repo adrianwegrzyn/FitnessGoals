@@ -1,43 +1,34 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity, TextInput, ScrollView} from 'react-native';
-import {CheckBox} from 'react-native-elements'
+import {StyleSheet, View, Text, TouchableOpacity, TextInput, ScrollView, Alert} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import RadioForm from 'react-native-simple-radio-button';
 
 const roundTo = require('round-to');
 
+var radio_props = [
+    {label: 'Kobieta   ', value: 0 },
+    {label: 'Mężczyzna', value: 1 }
+];
 
 export default class CalculatorBmi extends Component<> {
     constructor() {
         super();
         this.state = {
-            checkedMan: false,
-            checkedWoman: false,
             dataBmi: '',
             weight: '',
             growth: ''
         }
     }
 
-    checkedMan = () => {
-        this.setState({
-            checkedMan: !this.state.checkedMan,
-        });
-    }
-    checkedWoman = () => {
-        this.setState({
-            checkedWoman: !this.state.checkedWoman,
-        });
-    }
-
     calculate = () => {
-        if (this.state.weight === '') {
-            this.setState({
-                dataBmi: 'Proszę podać wagę'
-            });
+        if (isNaN(this.state.weight)) {
+            Alert.alert("Błędnie podana waga");
+        } else if (isNaN(this.state.growth)) {
+            Alert.alert("Błędnie podany wzrost");
+        } else if (this.state.weight === '') {
+            Alert.alert("Proszę podać wagę");
         } else if (this.state.growth === '') {
-            this.setState({
-                dataBmi: 'Proszę podać wzrost'
-            });
+            Alert.alert("Proszę podać wzrost");
         } else
             this.setState({
                 dataBmi: roundTo(this.state.weight / (this.state.growth / 100 * this.state.growth / 100), 2)
@@ -80,15 +71,13 @@ export default class CalculatorBmi extends Component<> {
                     <Text style={styles.title}>Wskaźnik masy ciała (BMI)</Text>
                     <View style={styles.sex}>
                         <Text style={styles.item}>Płeć</Text>
-                        <CheckBox
-                            onPress={this.checkedWoman}
-                            title='Kobieta'
-                            checked={this.state.checkedWoman}
-                        />
-                        <CheckBox
-                            onPress={this.checkedMan}
-                            title='Mężczyzna'
-                            checked={this.state.checkedMan}
+                        <RadioForm
+                            radio_props={radio_props}
+                            initial={0}
+                            formHorizontal={true}
+                            buttonColor={'#3B5998'}
+                            style={styles.sexRadio}
+                            onPress={(value) => {this.setState({value:value})}}
                         />
                     </View>
 
@@ -129,7 +118,7 @@ export default class CalculatorBmi extends Component<> {
                         locations={[0, 0.5, 0.9]}
                         colors={['#4c669f', '#3b5998', '#192f6a']}
                         style={styles.buttonWeekPlan}>
-                        <TouchableOpacity style={styles.touch} onPress={() => this.calculate()}>
+                        <TouchableOpacity onPress={() => this.calculate()}>
 
                             <Text style={styles.buttonTextWeekPlan}>
                                 Oblicz wskaźnik BMI
@@ -239,7 +228,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     sex: {
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     btn: {
         height: 70
@@ -256,6 +245,11 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 20,
         fontFamily: 'OpenSans-Bold'
+    },
+    sexRadio: {
+        marginLeft: 20,
+        marginRight: 10,
+        marginTop: 10,
     },
 
 });
