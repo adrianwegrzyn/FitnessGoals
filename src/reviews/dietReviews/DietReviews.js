@@ -19,7 +19,7 @@ export default class ReviewsOptions extends Component<> {
         super();
         this.state = {
             isLoading: true,
-            dataDietReviews: [],
+            dataTrainerReviews: [ ],
             refreshing: false,
             review: '',
         }
@@ -31,7 +31,7 @@ export default class ReviewsOptions extends Component<> {
             .then((responseJson) => {
                 this.setState({
                     isLoading: false,
-                    dataDietReviews: responseJson,
+                    dataTrainerReviews: responseJson,
                 });
 
             });
@@ -50,7 +50,7 @@ export default class ReviewsOptions extends Component<> {
             .then((responseJson) => {
                 this.setState({
                     isLoading: false,
-                    dataDietReviews: responseJson,
+                    dataTrainerReviews: responseJson,
                 });
             });
     }
@@ -63,11 +63,11 @@ export default class ReviewsOptions extends Component<> {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                idUser: 11,
-                name: "Adrian",
+                idUser: 1,
+                name: "Krzysiek",
                 date: this.formatDate(),
                 message: this.state.message,
-                photo: "https://sklep.etermed.pl/wp-content/uploads/pakiet_badan_mezczyzna_30_plus.jpg"
+                photo: "https://www.egierszewska.pl/wp-content/uploads/ewelina-gierszewska-zdj%C4%99cia-portretowe-fotograf-Wroc%C5%82aw-021-299x299.jpg"
             })
         });
         this._onRefresh();
@@ -97,27 +97,27 @@ export default class ReviewsOptions extends Component<> {
 
 
     render() {
-
+        console.log(this.state.dataTrainerReviews);
         let rowsReviews = [];
 
-        for (let i = 0; i < this.state.dataDietReviews.length; i++) {
+        for (let i = 0; i < this.state.dataTrainerReviews.length; i++) {
             rowsReviews.push(
                 <View key={i} style={styles.reviewContainer}>
                     <View style={{flex:1, }}>
                         <Image style={styles.image}
-                               source={{uri: this.state.dataDietReviews[i].photo}}/>
+                               source={{uri: this.state.dataTrainerReviews[i].photo}}/>
                     </View>
                     <View style={{flex:3}}>
                         <View style={styles.reviewMessage}>
                             <View>
-                                <Text style={styles.nickText}>{this.state.dataDietReviews[i].name}</Text>
+                                <Text style={styles.nickText}>{this.state.dataTrainerReviews[i].name}</Text>
                             </View>
                             <View>
-                                <Text style={styles.dateText}>{this.state.dataDietReviews[i].date}</Text>
+                                <Text style={styles.dateText}>{this.state.dataTrainerReviews[i].date}</Text>
                             </View>
                         </View>
                         <View style={{borderBottomColor: 'black', borderBottomWidth: 2, paddingBottom: 5, flex:6}}>
-                            <Text style={styles.reviewText}>{this.state.dataDietReviews[i].message}</Text>
+                            <Text style={styles.reviewText}>{this.state.dataTrainerReviews[i].message}</Text>
                         </View>
                     </View>
                 </View>
@@ -151,29 +151,12 @@ export default class ReviewsOptions extends Component<> {
                         onChangeText={(message) => this.setState({message})}
                         value={this.state.message}
                     />
-                    {/*<LinearGradient*/}
-                    {/*start={{x: 0.0, y: 0.25}} end={{x: 0.7, y: 2.0}}*/}
-                    {/*locations={[0,0.5,0.9]}*/}
-                    {/*colors={['#ff1012', '#23ef00', '#060dc3']}*/}
-                    {/*style={styles.linearGradient}>*/}
+
 
                     <TouchableOpacity  onPress={() => this.sendResult()} style={styles.button}>
                         <Text >Wyślij opinię</Text>
                     </TouchableOpacity>
-                {/*</LinearGradient>*/}
 
-
-                    {/*<LinearGradient*/}
-                        {/*colors={['#00FFFF', '#17C8FF', '#329BFF', '#4C64FF', '#6536FF', '#8000FF']}*/}
-                        {/*start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}*/}
-                        {/*style={{ height: 48, width: 200, alignItems: 'center', justifyContent: 'center', width: 200}}*/}
-                    {/*>*/}
-                        {/*<TouchableOpacity onPress={() => this.sendResult()} style={styles.buttonContainer}>*/}
-                            {/*<Text style={styles.buttonText}>*/}
-                                {/*LOGIN*/}
-                            {/*</Text>*/}
-                        {/*</TouchableOpacity>*/}
-                    {/*</LinearGradient>*/}
 
 
             </View>

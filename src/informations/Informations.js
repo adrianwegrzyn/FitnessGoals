@@ -41,24 +41,31 @@ export default class Informations extends Component<> {
                 {/*</View>*/}
 
                 <ScrollView>
-                <Text style={styles.title}>Dzięki Aplikacji</Text>
+                    <Text style={styles.title}>Dzięki Aplikacji</Text>
 
-                <View style={styles.iconView}>
-                    <Icon name='cellphone-android' size={70} color='#000000'/>
-                    <Text style={styles.iconDescription}>Zyskujesz wygodny dostęp do zakupionych usług i niezbędnych informacji</Text>
-                </View>
+                    <View style={styles.iconView}>
+                        <Icon name='cellphone-android' size={70} color='#000000'/>
+                        <Text style={styles.iconDescription}>Zyskujesz wygodny dostęp do zakupionych usług i niezbędnych
+                            informacji</Text>
+                    </View>
 
-                <View style={styles.iconView}>
-                    <Icon name='headset' size={70} color='#000000'/>
-                    <Text style={styles.iconDescription}>Uzyskasz eksperckie wsparcie potrzebne przy realizacji Twoich celów</Text>
-                </View>
+                    <View style={styles.iconView}>
+                        <Icon name='headset' size={70} color='#000000'/>
+                        <Text style={styles.iconDescription}>Uzyskasz eksperckie wsparcie potrzebne przy realizacji
+                            Twoich celów</Text>
+                    </View>
 
-                <View style={styles.iconView}>
-                    <Icon name='message-processing' size={70} color='#000000'/>
-                    <Text style={styles.iconDescription}>Korzystaj z czatu, aby dzielić się swoimi doświadczeniami z innymi</Text>
-                </View>
+                    <View style={styles.iconView}>
+                        <Icon name='message-processing' size={70} color='#000000'/>
+                        <Text style={styles.iconDescription}>Korzystaj z czatu, aby dzielić się swoimi doświadczeniami z
+                            innymi</Text>
+                    </View>
 
-                <Text style={styles.end}>Indywidualne plany treningowe i dietetyczne</Text>
+                    <Text style={styles.end}>Indywidualne plany treningowe i dietetyczne</Text>
+
+                    <TouchableOpacity onPress={() => this.notification()}>
+                        <Text> Kliknij mnie</Text>
+                    </TouchableOpacity>
 
             </ScrollView>
             </View>
