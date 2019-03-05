@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Navigation} from 'react-native-navigation';
+import LinearGradient from "react-native-linear-gradient";
 
 export default class App extends Component<> {
 
@@ -11,8 +12,8 @@ export default class App extends Component<> {
         this.state = { 
             buttonsArray: [[['TodayTraining', 'run', 'Plan treningowy'], ['DietOptions', 'bowl', 'Dieta'], ['', 'newspaper', 'Artykuły sportowe']],
                 [['', 'chart-line', 'Historia postępów'], ['', 'basket', 'Zakupy'], ['', 'lead-pencil', 'Pomiary']],
-                [['Chat', 'wechat', 'Czat'], ['', 'calculator', 'Kalkulator BMI'], ['', 'silverware-variant', 'Zapotrzebowanie kaloryczne']],
-                [['', 'map-marker-minus', 'Mapa biegów'], ['ReviewsOptions', 'content-copy', 'Opinie'], ['Informations', 'information-variant', 'Informacje']]]
+                [['Chat', 'wechat', 'Czat'], ['CalculatorBmi', 'calculator', 'Kalkulator BMI'], ['CaloricDemand', 'silverware-variant', 'Zapotrzebowanie kaloryczne']],
+                [['RunMap', 'map-marker-minus', 'Mapa biegów'], ['ReviewsOptions', 'content-copy', 'Opinie'], ['Informations', 'information-variant', 'Informacje']]]
         }
     }
 
@@ -47,12 +48,14 @@ export default class App extends Component<> {
         }
         return (
             <View style={styles.container}>
-                {rowsButtons}
-                <View style={styles.info}>
-                    <Text style={styles.infoText}>
-                        Zacznij już dziś !
-                    </Text>
-                </View>
+                <LinearGradient colors={['#dfe9f3', '#ffffff']} style={styles.linearGradient}>
+                    {rowsButtons}
+                    <View style={styles.info}>
+                        <Text style={styles.infoText}>
+                            Zacznij już dziś !
+                        </Text>
+                    </View>
+                </LinearGradient>
             </View>
         );
     }
@@ -61,7 +64,6 @@ export default class App extends Component<> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFFFFF',
     },
     nameToolBar: {
         fontSize: 20,
@@ -82,7 +84,8 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 10,
         margin: 9,
-        padding: 3
+        padding: 3,
+        backgroundColor: '#FFFFFF'
     },
     textTouchableOpacity: {
         textAlign: 'center',
