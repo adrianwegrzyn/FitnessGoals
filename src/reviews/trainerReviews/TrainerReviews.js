@@ -1,17 +1,29 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, ScrollView, TouchableOpacity, Image} from 'react-native';
 import {Text} from "react-native-elements";
+import {Navigation} from "react-native-navigation";
 
 
 
 
 export default class TrainerReviews extends Component<> {
 
+
+    newWindow = (window) => {
+        Navigation.push(this.props.componentId, {
+            component: {
+                name: window,
+            }
+        });
+    };
+
+
+
     render() {
         return (
             <ScrollView style={styles.container}>
                 <View>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.newWindow('SelectTrainer')}>
                         <View style={styles.reviewBox}>
                             <View style={styles.imageBox}>
                                 <Image style={styles.image}

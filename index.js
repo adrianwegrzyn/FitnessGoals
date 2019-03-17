@@ -18,6 +18,7 @@ import RunMap from './src/map/RunMap'
 import CalculatorBmi from './src/calculatorBmi/CalculatorBmi'
 import CaloricDemand from './src/caloricDemand/CaloricDemand'
 import TrainerReviews from './src/reviews/trainerReviews/TrainerReviews'
+import SelectTrainer from './src/reviews/trainerReviews/SelectTrainer'
 import Measurement from './src/measurement/Measurement'
 import Shopping from './src/shopping/Shopping'
 import ShoppingDetails from './src/shopping/ShoppingDetails'
@@ -39,6 +40,7 @@ Navigation.registerComponent('RunMap', () => RunMap);
 Navigation.registerComponent('CalculatorBmi', () => CalculatorBmi);
 Navigation.registerComponent('CaloricDemand', () => CaloricDemand);
 Navigation.registerComponent('TrainerReviews', () => TrainerReviews);
+Navigation.registerComponent('SelectTrainer', () => SelectTrainer);
 Navigation.registerComponent('Measurement', () => Measurement);
 Navigation.registerComponent('Shopping', () => Shopping);
 Navigation.registerComponent('ShoppingDetails', () => ShoppingDetails);

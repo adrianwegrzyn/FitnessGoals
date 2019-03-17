@@ -18,7 +18,7 @@ export default class ReviewsOptions extends Component<> {
         super();
         this.state = {
             isLoading: true,
-            dataDietReviews: [],
+            dataTrainerReviews: [],
             refreshing: false,
             review: '',
         }
@@ -30,7 +30,7 @@ export default class ReviewsOptions extends Component<> {
             .then((responseJson) => {
                 this.setState({
                     isLoading: false,
-                    dataDietReviews: responseJson,
+                    dataTrainerReviews: responseJson,
                 });
 
             });
@@ -49,7 +49,7 @@ export default class ReviewsOptions extends Component<> {
             .then((responseJson) => {
                 this.setState({
                     isLoading: false,
-                    dataDietReviews: responseJson,
+                    dataTrainerReviews: responseJson,
                 });
             });
     }
@@ -99,24 +99,24 @@ export default class ReviewsOptions extends Component<> {
 
         let rowsReviews = [];
 
-        for (let i = 0; i < this.state.dataDietReviews.length; i++) {
+        for (let i = 0; i < this.state.dataTrainerReviews.length; i++) {
             rowsReviews.push(
                 <View key={i} style={styles.reviewContainer}>
                     <View style={{flex:1, }}>
                         <Image style={styles.image}
-                               source={{uri: this.state.dataDietReviews[i].photo}}/>
+                               source={{uri: this.state.dataTrainerReviews[i].photo}}/>
                     </View>
                     <View style={{flex:3}}>
                         <View style={styles.reviewMessage}>
                             <View>
-                                <Text style={styles.nickText}>{this.state.dataDietReviews[i].name}</Text>
+                                <Text style={styles.nickText}>{this.state.dataTrainerReviews[i].name}</Text>
                             </View>
                             <View>
-                                <Text style={styles.dateText}>{this.state.dataDietReviews[i].date}</Text>
+                                <Text style={styles.dateText}>{this.state.dataTrainerReviews[i].date}</Text>
                             </View>
                         </View>
                         <View style={{borderBottomColor: 'black', borderBottomWidth: 2, paddingBottom: 5, flex:6}}>
-                            <Text style={styles.reviewText}>{this.state.dataDietReviews[i].message}</Text>
+                            <Text style={styles.reviewText}>{this.state.dataTrainerReviews[i].message}</Text>
                         </View>
                     </View>
                 </View>
