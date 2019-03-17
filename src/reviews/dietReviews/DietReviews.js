@@ -10,7 +10,6 @@ import {
     TouchableOpacity,
     TextInput
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 
 
@@ -19,14 +18,14 @@ export default class ReviewsOptions extends Component<> {
         super();
         this.state = {
             isLoading: true,
-            dataTrainerReviews: [ ],
+            dataTrainerReviews: [],
             refreshing: false,
             review: '',
         }
     }
 
     componentDidMount() {
-        fetch("https://trenerprestonalny.herokuapp.com/opionion/trainer/show?fbclid=IwAR2yOdT5gfY3YMhQ-pMALhiGw-5O-o9TDTNBd_fTe8fl4FYj3wuia9qlkyY")
+        fetch("https://applicationtrainer.herokuapp.com/opinion/diet/show")
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({
@@ -45,7 +44,7 @@ export default class ReviewsOptions extends Component<> {
     };
 
     fetchData() {
-        return fetch("https://trenerprestonalny.herokuapp.com/opionion/trainer/show?fbclid=IwAR2yOdT5gfY3YMhQ-pMALhiGw-5O-o9TDTNBd_fTe8fl4FYj3wuia9qlkyY")
+        return fetch("https://applicationtrainer.herokuapp.com/opinion/diet/show")
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({
@@ -56,18 +55,18 @@ export default class ReviewsOptions extends Component<> {
     }
 
     sendResult = () => {
-        fetch('https://trenerprestonalny.herokuapp.com/opionion/trainer/send', {
+        fetch('https://applicationtrainer.herokuapp.com/opinion/diet/send', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                idUser: 1,
-                name: "Krzysiek",
+                idUser: 11,
+                name: "Adrian",
                 date: this.formatDate(),
                 message: this.state.message,
-                photo: "https://www.egierszewska.pl/wp-content/uploads/ewelina-gierszewska-zdj%C4%99cia-portretowe-fotograf-Wroc%C5%82aw-021-299x299.jpg"
+                photo: "https://sklep.etermed.pl/wp-content/uploads/pakiet_badan_mezczyzna_30_plus.jpg"
             })
         });
         this._onRefresh();
@@ -77,7 +76,7 @@ export default class ReviewsOptions extends Component<> {
     formatDate() {
         var today = new Date();
         var dd = today.getDate();
-        var mm = today.getMonth() + 1; //January is 0!
+        var mm = today.getMonth() + 1;
         var yyyy = today.getFullYear();
 
         if (dd < 10) {
@@ -97,7 +96,7 @@ export default class ReviewsOptions extends Component<> {
 
 
     render() {
-        console.log(this.state.dataTrainerReviews);
+
         let rowsReviews = [];
 
         for (let i = 0; i < this.state.dataTrainerReviews.length; i++) {
@@ -151,12 +150,29 @@ export default class ReviewsOptions extends Component<> {
                         onChangeText={(message) => this.setState({message})}
                         value={this.state.message}
                     />
-
+                    {/*<LinearGradient*/}
+                    {/*start={{x: 0.0, y: 0.25}} end={{x: 0.7, y: 2.0}}*/}
+                    {/*locations={[0,0.5,0.9]}*/}
+                    {/*colors={['#ff1012', '#23ef00', '#060dc3']}*/}
+                    {/*style={styles.linearGradient}>*/}
 
                     <TouchableOpacity  onPress={() => this.sendResult()} style={styles.button}>
                         <Text >Wyślij opinię</Text>
                     </TouchableOpacity>
+                {/*</LinearGradient>*/}
 
+
+                    {/*<LinearGradient*/}
+                        {/*colors={['#00FFFF', '#17C8FF', '#329BFF', '#4C64FF', '#6536FF', '#8000FF']}*/}
+                        {/*start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}*/}
+                        {/*style={{ height: 48, width: 200, alignItems: 'center', justifyContent: 'center', width: 200}}*/}
+                    {/*>*/}
+                        {/*<TouchableOpacity onPress={() => this.sendResult()} style={styles.buttonContainer}>*/}
+                            {/*<Text style={styles.buttonText}>*/}
+                                {/*LOGIN*/}
+                            {/*</Text>*/}
+                        {/*</TouchableOpacity>*/}
+                    {/*</LinearGradient>*/}
 
 
             </View>

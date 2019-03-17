@@ -3,12 +3,10 @@ import {
     StyleSheet,
     Text,
     View,
-    ScrollView,
+    ScrollView
 } from 'react-native';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import {Navigation} from 'react-native-navigation';
-
-
 
 export default class Informations extends Component<> {
     constructor() {
@@ -26,8 +24,14 @@ export default class Informations extends Component<> {
     };
 
 
-    render() {
 
+
+
+
+
+
+
+render() {
 
         return (
             <View style={styles.container}>
@@ -67,7 +71,8 @@ export default class Informations extends Component<> {
                         <Text> Kliknij mnie</Text>
                     </TouchableOpacity>
 
-            </ScrollView>
+
+                </ScrollView>
             </View>
 
         );

@@ -107,40 +107,14 @@ export default class RunMap extends Component<> {
                             this.marker = marker;
                         }}
                         coordinate={this.state.coordinate} />
-                    <MapView.Marker
-                        coordinate={{
-                            latitude: 50.017847,
-                            longitude: 20.997623
-                        }}
-                        title={'Xtreme'}
-                        description={'Kosz 89,99 zł/mc'}
-                    />
-                    <MapView.Marker
-                        coordinate={{
-                            latitude: 50.013651,
-                            longitude:  21.022296
-                        }}
-                        title={'New Power Live'}
-                        description={'Kosz 59,99 zł/mc'}
-                    />
-                    <MapView.Marker
-                        coordinate={{
-                            latitude: 50.019338,
-                            longitude: 21.015820,
-                        }}
-                        title={'Grafit'}
-                        description={'Kosz 119.99 zł/mc'}
-                    />
-                    <MapView.Marker
-                        coordinate={{
-                            latitude: 50.016949,
-                            longitude: 20.982659,
-                        }}
-                        title={'Fitness Klub Forma'}
-                        description={'Kosz 119,99 zł/mc'}
-                    />
                 </MapView>
-
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={[styles.bubble, styles.button]}>
+                        <Text style={styles.bottomBarContent}>
+                            {parseFloat(this.state.distanceTravelled).toFixed(2)} km
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }

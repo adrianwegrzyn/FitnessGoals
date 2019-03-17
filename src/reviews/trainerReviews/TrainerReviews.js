@@ -8,6 +8,7 @@ import {Navigation} from "react-native-navigation";
 
 export default class TrainerReviews extends Component<> {
 
+
     newWindow = (window) => {
         Navigation.push(this.props.componentId, {
             component: {
@@ -16,11 +17,13 @@ export default class TrainerReviews extends Component<> {
         });
     };
 
+
+
     render() {
         return (
             <ScrollView style={styles.container}>
                 <View>
-                    <TouchableOpacity onPress={()=> this.newWindow('SelectTrainer')}>
+                    <TouchableOpacity onPress={() => this.newWindow('SelectTrainer')}>
                         <View style={styles.reviewBox}>
                             <View style={styles.imageBox}>
                                 <Image style={styles.image}

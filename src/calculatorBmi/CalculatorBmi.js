@@ -1,49 +1,38 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity, TextInput} from 'react-native';
-import { CheckBox } from 'react-native-elements'
+import {StyleSheet, View, Text, TouchableOpacity, TextInput, ScrollView, Alert} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import RadioForm from 'react-native-simple-radio-button';
+
 const roundTo = require('round-to');
 
-
-
-
+var radio_props = [
+    {label: 'Kobieta   ', value: 0 },
+    {label: 'Mężczyzna', value: 1 }
+];
 
 export default class CalculatorBmi extends Component<> {
     constructor() {
         super();
         this.state = {
-           checkedMan: false,
-            checkedWoman: false,
             dataBmi: '',
             weight: '',
             growth: ''
         }
     }
 
-    checkedMan = () => {
-        this.setState({
-            checkedMan: !this.state.checkedMan,
-        });
-    }
-    checkedWoman = () => {
-        this.setState({
-            checkedWoman: !this.state.checkedWoman,
-        });
-    }
-
     calculate = () => {
-        if (this.state.weight === '') {
-            this.setState({
-                dataBmi: 'Proszę podać wagę'
-            });
+        if (isNaN(this.state.weight)) {
+            Alert.alert("Błędnie podana waga");
+        } else if (isNaN(this.state.growth)) {
+            Alert.alert("Błędnie podany wzrost");
+        } else if (this.state.weight === '') {
+            Alert.alert("Proszę podać wagę");
         } else if (this.state.growth === '') {
-            this.setState({
-                dataBmi: 'Proszę podać wzrost'
-            });
+            Alert.alert("Proszę podać wzrost");
         } else
             this.setState({
-            dataBmi:  roundTo(this.state.weight / (this.state.growth/100 * this.state.growth/100),2)
-        });
+                dataBmi: roundTo(this.state.weight / (this.state.growth / 100 * this.state.growth / 100), 2)
+            });
     }
 
     // componentDidMount() {
@@ -76,51 +65,51 @@ export default class CalculatorBmi extends Component<> {
 
     render() {
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
 
-                <Text style={styles.title}>Wskaźnik masy ciała (BMI)</Text>
-                <View style={styles.sex}>
-                <Text style={styles.item}>Płeć</Text>
-                <CheckBox
-                    onPress={this.checkedWoman}
-                    title='Kobieta'
-                    checked={this.state.checkedWoman}
-                />
-                <CheckBox
-                    onPress={this.checkedMan}
-                    title='Mężczyzna'
-                    checked={this.state.checkedMan}
-                />
-                </View>
+                <View style={{flex: 8}}>
+                    <Text style={styles.title}>Wskaźnik masy ciała (BMI)</Text>
+                    <View style={styles.sex}>
+                        <Text style={styles.item}>Płeć</Text>
+                        <RadioForm
+                            radio_props={radio_props}
+                            initial={0}
+                            formHorizontal={true}
+                            buttonColor={'#3B5998'}
+                            style={styles.sexRadio}
+                            onPress={(value) => {this.setState({value:value})}}
+                        />
+                    </View>
 
-                <View style={styles.weight}>
-                <Text style={styles.item}>Waga</Text>
+                    <View style={styles.weight}>
+                        <Text style={styles.item}>Waga</Text>
 
-                <TextInput
-                    multiline={true}
-                    numberOfLines={1}
-                    style={styles.inputTextWeight}
-                    onChangeText={(weight) => this.setState({weight})}
-                    value={this.state.weight}
-                    keyboardType='number-pad'
-                    textAlign={'center'}
-                />
-                    <Text style={styles.item}>kg</Text>
-                </View>
+                        <TextInput
+                            multiline={true}
+                            numberOfLines={1}
+                            style={styles.inputTextWeight}
+                            onChangeText={(weight) => this.setState({weight})}
+                            value={this.state.weight}
+                            keyboardType='number-pad'
+                            textAlign={'center'}
+                        />
+                        <Text style={styles.item}>kg</Text>
+                    </View>
 
-                <View style={styles.weight}>
-                    <Text style={styles.item}>Wzrost</Text>
+                    <View style={styles.weight}>
+                        <Text style={styles.item}>Wzrost</Text>
 
-                    <TextInput
-                        multiline={true}
-                        numberOfLines={1}
-                        style={styles.inputTextGrowth}
-                        onChangeText={(growth) => this.setState({growth})}
-                        value={this.state.growth}
-                        keyboardType='number-pad'
-                        textAlign={'center'}
-                    />
-                    <Text style={styles.item}>cm</Text>
+                        <TextInput
+                            multiline={true}
+                            numberOfLines={1}
+                            style={styles.inputTextGrowth}
+                            onChangeText={(growth) => this.setState({growth})}
+                            value={this.state.growth}
+                            keyboardType='number-pad'
+                            textAlign={'center'}
+                        />
+                        <Text style={styles.item}>cm</Text>
+                    </View>
                 </View>
 
                 <View style={styles.buttonMargin}>
@@ -129,7 +118,7 @@ export default class CalculatorBmi extends Component<> {
                         locations={[0, 0.5, 0.9]}
                         colors={['#4c669f', '#3b5998', '#192f6a']}
                         style={styles.buttonWeekPlan}>
-                        <TouchableOpacity style={styles.touch} onPress={() => this.calculate()}>
+                        <TouchableOpacity onPress={() => this.calculate()}>
 
                             <Text style={styles.buttonTextWeekPlan}>
                                 Oblicz wskaźnik BMI
@@ -137,33 +126,36 @@ export default class CalculatorBmi extends Component<> {
                         </TouchableOpacity>
                     </LinearGradient>
                 </View>
+                <View style={{flex: 8}}>
 
-                <Text style={styles.resultText}>Twoje BMI wynosi: </Text>
-                <Text style={styles.result}>{this.state.dataBmi}</Text>
-                <View>
-                <Text style={styles.description}>
-                    Normy wskaźnika BMI zostały sporządzone przez Światową Organizację Zdrowia (ang. WHO). Najczęściej występującym typem klasyfikacji wyników jest kategoryzacja rozszerzona która prezentuje się w poniższy sposób: {"\n"} {"\n"}
+                    <Text style={styles.resultText}>Twoje BMI wynosi: </Text>
+                    <Text style={styles.result}>{this.state.dataBmi}</Text>
+                    <View>
+                        <Text style={styles.description}>
+                            Normy wskaźnika BMI zostały sporządzone przez Światową Organizację Zdrowia (ang. WHO).
+                            Najczęściej występującym typem klasyfikacji wyników jest kategoryzacja rozszerzona która
+                            prezentuje się w poniższy sposób: {"\n"} {"\n"}
 
-                    - poniżej 16,0 – wygłodzenie {"\n"}
+                            - poniżej 16,0 – wygłodzenie {"\n"}
 
-                    - 16,0–16,99 – wychudzenie {"\n"}
+                            - 16,0–16,99 – wychudzenie {"\n"}
 
-                    - 17,0–18,49 – niedowagę {"\n"}
+                            - 17,0–18,49 – niedowagę {"\n"}
 
-                    - 18,5–24,99 – wartość prawidłową {"\n"}
+                            - 18,5–24,99 – wartość prawidłową {"\n"}
 
-                    - 25,0–29,99 – nadwagę {"\n"}
+                            - 25,0–29,99 – nadwagę {"\n"}
 
-                    - 30,0–34,99 – I stopień otyłości {"\n"}
+                            - 30,0–34,99 – I stopień otyłości {"\n"}
 
-                    - 35,0–39,99 – II stopień otyłości {"\n"}
+                            - 35,0–39,99 – II stopień otyłości {"\n"}
 
-                    - powyzej 40,0 – III stopień otyłości
-                </Text>
+                            - powyzej 40,0 – III stopień otyłości
+                        </Text>
+                    </View>
                 </View>
 
-
-            </View>
+            </ScrollView>
         );
     }
 }
@@ -189,7 +181,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginLeft: 30,
         marginRight: 30,
-        flex: 0.7,
+        flex: 2,
     },
     buttonWeekPlan: {
         padding: 10,
@@ -210,7 +202,7 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderWidth: 1,
         fontSize: 14,
-        marginLeft:11,
+        marginLeft: 11,
         marginRight: 10,
         marginTop: 10,
         borderLeftWidth: 0,
@@ -224,7 +216,7 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderWidth: 1,
         fontSize: 14,
-        marginLeft:0,
+        marginLeft: 0,
         marginRight: 10,
         marginTop: 10,
         borderLeftWidth: 0,
@@ -236,7 +228,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     sex: {
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     btn: {
         height: 70
@@ -253,6 +245,11 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 20,
         fontFamily: 'OpenSans-Bold'
+    },
+    sexRadio: {
+        marginLeft: 20,
+        marginRight: 10,
+        marginTop: 10,
     },
 
 });

@@ -16,14 +16,15 @@ export default class WeekTraining extends Component<> {
     }
 
     componentDidMount() {
-        fetch("https://pwsz-quiz-api.herokuapp.com/api/tests")
+        fetch("https://applicationtrainer.herokuapp.com/exercises/users//take/1:2018-12-21:2018-12-22")
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({
                     isLoading: false,
                     dataWeekPlan: responseJson,
-                });
 
+                });
+                console.log(this.state.dataWeekPlan)
             });
     }
 
@@ -32,20 +33,29 @@ export default class WeekTraining extends Component<> {
         let rowsBoxPlan = [];
 
         for (let i = 0; i < this.state.dataWeekPlan.length; i++) {
+            let row = [];
+            for (let j = 0; j < this.state.dataWeekPlan[i].exercise.length; j++) {
+                row.push(
+                    <View key={j}>
+
+                        <Text style={styles.contentText}>
+                            - {this.state.dataWeekPlan[i].exercise[j].repetitions} {this.state.dataWeekPlan[i].exercise[j].nameExercise} x {this.state.dataWeekPlan[i].exercise[j].series}
+                        </Text>
+
+                    </View>
+                )
+            }
             rowsBoxPlan.push(
                 <View key={i}>
                     <View style={styles.titleDate}>
                         <Text style={styles.titleDateText}>
-                            {this.state.dataWeekPlan[i].name}
+                            {this.state.dataWeekPlan[i].dateDay}
                         </Text>
                     </View>
                     <View style={styles.content}>
-                        <Text style={styles.contentText}>
-                            {_.map(this.state.dataWeekPlan[i].tags, x => (x + '\n'))}
-                        </Text>
+                        {row}
                     </View>
-                </View>
-            )
+                </View>)
         }
 
         return (
@@ -77,7 +87,8 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         borderBottomColor: '#000000',
         borderBottomWidth: 1,
-        marginBottom: 30
+        marginBottom: 30,
+        paddingBottom: 30
     },
     contentText: {
         margin: 10,

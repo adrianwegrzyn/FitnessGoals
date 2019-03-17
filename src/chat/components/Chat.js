@@ -25,7 +25,6 @@ class Chat extends React.Component<> {
     }
 
     get user() {
-        // Return our name and our UID for GiftedChat to parse
         return {
             name: 'Adrian',
             _id: Fire.shared.uid,

@@ -4,6 +4,7 @@ import android.app.Application;
 import com.facebook.react.ReactApplication;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
+import com.github.wumke.RNLocalNotifications.RNLocalNotificationsPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.facebook.react.ReactNativeHost;
@@ -57,7 +58,8 @@ protected List<ReactPackage> getPackages() {
             new LinearGradientPackage(),
             new VectorIconsPackage(),
             new SplashScreenReactPackage(),
-            new LinearGradientPackage()
+            new LinearGradientPackage(),
+            new RNLocalNotificationsPackage()
     );
 }
 

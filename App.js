@@ -11,7 +11,7 @@ export default class App extends Component<> {
         super();
         this.state = { 
             buttonsArray: [[['TodayTraining', 'run', 'Plan treningowy'], ['DietOptions', 'bowl', 'Dieta'], ['', 'newspaper', 'Artykuły sportowe']],
-                [['', 'chart-line', 'Historia postępów'], ['', 'basket', 'Zakupy'], ['', 'lead-pencil', 'Pomiary']],
+                [['', 'chart-line', 'Historia postępów'], ['Shopping', 'basket', 'Zakupy'], ['Measurement', 'lead-pencil', 'Pomiary']],
                 [['Chat', 'wechat', 'Czat'], ['CalculatorBmi', 'calculator', 'Kalkulator BMI'], ['CaloricDemand', 'silverware-variant', 'Zapotrzebowanie kaloryczne']],
                 [['RunMap', 'map-marker-minus', 'Mapa biegów'], ['ReviewsOptions', 'content-copy', 'Opinie'], ['Informations', 'information-variant', 'Informacje']]]
         }
@@ -46,6 +46,8 @@ export default class App extends Component<> {
             }
             rowsButtons.push(<View key={i} style={styles.rowMenu}>{row}</View>)
         }
+
+
         return (
             <View style={styles.container}>
                 <LinearGradient colors={['#dfe9f3', '#ffffff']} style={styles.linearGradient}>
