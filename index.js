@@ -22,6 +22,7 @@ import SelectTrainer from './src/reviews/trainerReviews/SelectTrainer'
 import Measurement from './src/measurement/Measurement'
 import Shopping from './src/shopping/Shopping'
 import ShoppingDetails from './src/shopping/ShoppingDetails'
+import Summary from './src/shopping/Summary'
 
 
 Navigation.registerComponent('App', () => App);
@@ -44,6 +45,7 @@ Navigation.registerComponent('SelectTrainer', () => SelectTrainer);
 Navigation.registerComponent('Measurement', () => Measurement);
 Navigation.registerComponent('Shopping', () => Shopping);
 Navigation.registerComponent('ShoppingDetails', () => ShoppingDetails);
+Navigation.registerComponent('Summary', () => Summary);
 
 
 

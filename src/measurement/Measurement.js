@@ -50,7 +50,7 @@ export default class Measurement extends Component<> {
             <ScrollView>
                 <View style={styles.measumerent}>
                     <Image style={{width: 110, height: 110}}
-                        source={require('../../image/measurement.png')}
+                        source={{uri: 'https://i.postimg.cc/tTS23W6c/measurement.png'}}
                     />
                 </View>
 
@@ -76,6 +76,7 @@ export default class Measurement extends Component<> {
                 <Text style={styles.title}> Szczegółowe wymiary </Text>
                 <View style={styles.measumerent}>
                     <Image
+                        // source={{uri: 'https://i.postimg.cc/hj63FVGd/body.gif'}}
                         source={require('../../image/body.gif')}
                     />
                 </View>

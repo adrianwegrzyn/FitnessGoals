@@ -46,7 +46,7 @@ export default class Shopping extends Component<> {
                 <Text style={styles.title}> Dieta </Text>
                 <View style={styles.diet}>
                     <Image style={{width: 100, height: 100}}
-                        source={require('../../image/diet.png')}
+                           source={{uri: 'https://i.postimg.cc/FKjFL6gz/diet.png'}}
                     />
                 </View>
                 <Text style={styles.price}> Już od 39.99 zł</Text>
@@ -57,7 +57,7 @@ export default class Shopping extends Component<> {
                 <Text style={styles.title}> Plan Treningowy </Text>
                 <View style={styles.diet}>
                     <Image style={{width: 100, height: 100}}
-                           source={require('../../image/gym.png')}
+                           source={{uri: 'https://i.postimg.cc/SQn51M37/gym.png'}}
                     />
                 </View>
                 <Text style={styles.price}> Już od 49.99 zł</Text>
@@ -69,17 +69,17 @@ export default class Shopping extends Component<> {
                 <View style={styles.row}>
                 <View style={styles.diet}>
                     <Image style={{width: 100, height: 100}}
-                           source={require('../../image/diet.png')}
+                           source={{uri: 'https://i.postimg.cc/FKjFL6gz/diet.png'}}
                     />
                 </View>
                     <View style={styles.diet}>
                         <Image style={{width: 70, height: 70}}
-                               source={require('../../image/plus.png')}
+                               source={{uri: 'https://i.postimg.cc/MTpkp39h/plus.png'}}
                         />
                     </View>
                 <View style={styles.diet}>
                     <Image style={{width: 100, height: 100}}
-                           source={require('../../image/gym.png')}
+                           source={{uri: 'https://i.postimg.cc/SQn51M37/gym.png'}}
                     />
                 </View>
                 </View>

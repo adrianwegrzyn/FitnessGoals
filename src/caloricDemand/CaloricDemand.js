@@ -144,7 +144,7 @@ export default class CaloricDemand extends Component<> {
                         <Text style={styles.item}>Płeć</Text>
                         <RadioForm
                             radio_props={radio_props}
-                            initial={0}
+                            initial={-1}
                             formHorizontal={true}
                             buttonColor={'#3B5998'}
                             style={styles.sexRadio}
