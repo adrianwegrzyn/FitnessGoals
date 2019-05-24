@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "firebase": "4.8.1",
     "haversine": "^1.1.0",
     "lodash": "latest",

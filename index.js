@@ -23,6 +23,8 @@ import Measurement from './src/measurement/Measurement'
 import Shopping from './src/shopping/Shopping'
 import ShoppingDetails from './src/shopping/ShoppingDetails'
 import Summary from './src/shopping/Summary'
+import Home from './src/main/Home'
+// import LogIn from './src/components/Login.js'
 
 
 Navigation.registerComponent('App', () => App);
@@ -46,6 +48,8 @@ Navigation.registerComponent('Measurement', () => Measurement);
 Navigation.registerComponent('Shopping', () => Shopping);
 Navigation.registerComponent('ShoppingDetails', () => ShoppingDetails);
 Navigation.registerComponent('Summary', () => Summary);
+Navigation.registerComponent('Home', () => Home);
+// Navigation.registerComponent('LogIn', () => LogIn);
 
 
 

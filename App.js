@@ -1,20 +1,24 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Navigation} from 'react-native-navigation';
-import LinearGradient from "react-native-linear-gradient";
+import deviceStorage from './src/services/deviceStorage.js';
+import { Loading } from './src/components/common/';
+import Auth from './src/auth/Auth';
+import Home from "./src/main/Home";
 
 export default class App extends Component<> {
 
     constructor() {
         super();
         this.state = {
-            buttonsArray: [[['TodayTraining', 'run', 'Plan treningowy'], ['DietOptions', 'bowl', 'Dieta'], ['', 'newspaper', 'Artykuły sportowe']],
-                [['', 'chart-line', 'Historia postępów'], ['Shopping', 'basket', 'Zakupy'], ['Measurement', 'lead-pencil', 'Pomiary']],
-                [['Chat', 'wechat', 'Czat'], ['CalculatorBmi', 'calculator', 'Kalkulator BMI'], ['CaloricDemand', 'silverware-variant', 'Zapotrzebowanie kaloryczne']],
-                [['RunMap', 'map-marker-minus', 'Mapa biegów'], ['ReviewsOptions', 'content-copy', 'Opinie'], ['Informations', 'information-variant', 'Informacje']]]
-        }
+            jwt: '',
+            loading: true
+        };
+        this.newJWT = this.newJWT.bind(this);
+        this.deleteJWT = deviceStorage.deleteJWT.bind(this);
+        this.loadJWT = deviceStorage.loadJWT.bind(this);
+        this.loadJWT();
     }
 
     componentDidMount() {
@@ -29,86 +33,32 @@ export default class App extends Component<> {
         });
     };
 
-    render() {
-
-        let rowsButtons = [];
-        for (let i = 0; i < 4; i++) {
-            let row = [];
-            for (let j = 0; j < 3; j++) {
-                row.push(
-                    <TouchableOpacity key={this.state.buttonsArray[i][j]}
-                                      onPress={() => this.newWindow(this.state.buttonsArray[i][j][0])}
-                                      style={styles.itemTouchableOpacity}>
-                        <Icon name={this.state.buttonsArray[i][j][1]} size={50} color='#000000'/>
-                        <Text style={styles.textTouchableOpacity}>{this.state.buttonsArray[i][j][2]}</Text>
-                    </TouchableOpacity>
-                )
-            }
-            rowsButtons.push(<View key={i} style={styles.rowMenu}>{row}</View>)
-        }
-
-
-        return (
-            <View style={styles.container}>
-                <LinearGradient colors={['#dfe9f3', '#ffffff']} style={styles.linearGradient}>
-                    {rowsButtons}
-                    <View style={styles.info}>
-                        <Text style={styles.infoText}>
-                            Zacznij już dziś !
-                        </Text>
-                    </View>
-                </LinearGradient>
-            </View>
-        );
+    newJWT(jwt){
+        this.setState({
+            jwt: jwt
+        });
     }
+
+    render() {
+        if (this.state.loading) {
+            return (
+                <Loading size={'large'} />
+            );
+        } else if (!this.state.jwt) {
+            return (
+                <Auth newJWT={this.newJWT} />
+            );
+        } else if (this.state.jwt) {
+            return (
+                <Home jwt={this.state.jwt} deleteJWT={this.deleteJWT} />
+            );
+        }
+    }
+
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-    },
-    nameToolBar: {
-        fontSize: 20,
-    },
-    content: {
-        flex: 11,
-    },
-    rowMenu: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-around'
-    },
-    itemTouchableOpacity: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderColor: '#000000',
-        borderWidth: 2,
-        borderRadius: 10,
-        margin: 9,
-        padding: 3,
-        backgroundColor: '#FFFFFF'
-    },
-    textTouchableOpacity: {
-        textAlign: 'center',
-        color: '#5b5b5b',
-        fontWeight: 'bold',
-        fontSize: 11
-    },
-    info: {
-        flex: 0.4,
-        backgroundColor: '#000000',
-        justifyContent: 'center'
-    },
-    infoText: {
-        fontSize: 30,
-        fontFamily: 'Caveat-Regular',
-        textAlign: 'center',
-        margin: 10,
-        color: '#ffffff',
-        backgroundColor: 'transparent',
-    },
-    linearGradient: {
-        flex: 1,
-    },
+    }
 });

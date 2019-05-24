@@ -23,14 +23,6 @@ export default class Informations extends Component<> {
         })
     };
 
-
-
-
-
-
-
-
-
 render() {
 
         return (
