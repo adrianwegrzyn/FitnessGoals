@@ -9,9 +9,9 @@ export default class App extends Component<> {
 
     constructor() {
         super();
-        this.state = { 
-            buttonsArray: [[['TodayTraining', 'run', 'Plan treningowy'], ['DietOptions', 'bowl', 'Dieta'], ['', 'newspaper', 'Artykuły sportowe']],
-                [['', 'chart-line', 'Historia postępów'], ['Shopping', 'basket', 'Zakupy'], ['Measurement', 'lead-pencil', 'Pomiary']],
+        this.state = {
+            buttonsArray: [[['TodayTraining', 'run', 'Plan treningowy'], ['DietOptions', 'bowl', 'Dieta'], ['SportArticles', 'newspaper', 'Artykuły sportowe']],
+                [['ProgressStory', 'chart-line', 'Historia postępów'], ['Shopping', 'basket', 'Zakupy'], ['Measurement', 'lead-pencil', 'Pomiary']],
                 [['Chat', 'wechat', 'Czat'], ['CalculatorBmi', 'calculator', 'Kalkulator BMI'], ['CaloricDemand', 'silverware-variant', 'Zapotrzebowanie kaloryczne']],
                 [['RunMap', 'map-marker-minus', 'Mapa biegów'], ['ReviewsOptions', 'content-copy', 'Opinie'], ['Informations', 'information-variant', 'Informacje']]]
         }

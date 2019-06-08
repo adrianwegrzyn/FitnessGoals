@@ -6,9 +6,10 @@ import {
     ScrollView,
     TouchableOpacity,
     Image,
-    TextInput
+    TextInput, Alert
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {Navigation} from "react-native-navigation";
 
 
 
@@ -23,6 +24,18 @@ export default class Measurement extends Component<> {
             }
         };
     }
+
+    sendResult = () => {
+        this.newWindow('App');
+    };
+
+    newWindow = (window) => {
+        Navigation.push(this.props.componentId, {
+            component: {
+                name: window,
+            }
+        });
+    };
 
     constructor() {
         super();
@@ -50,7 +63,7 @@ export default class Measurement extends Component<> {
             <ScrollView>
                 <View style={styles.measumerent}>
                     <Image style={{width: 110, height: 110}}
-                        source={require('../../image/measurement.png')}
+                        source={{uri: 'https://i.postimg.cc/tTS23W6c/measurement.png'}}
                     />
                 </View>
 
@@ -76,6 +89,7 @@ export default class Measurement extends Component<> {
                 <Text style={styles.title}> Szczegółowe wymiary </Text>
                 <View style={styles.measumerent}>
                     <Image
+                        // source={{uri: 'https://i.postimg.cc/hj63FVGd/body.gif'}}
                         source={require('../../image/body.gif')}
                     />
                 </View>
@@ -235,7 +249,7 @@ export default class Measurement extends Component<> {
                         style={styles.buttonWeekPlan}>
                         <TouchableOpacity style={styles.touch} >
 
-                            <Text style={styles.buttonTextWeekPlan}>
+                            <Text onPress={() => this.sendResult()} style={styles.buttonTextWeekPlan}>
                                 Aktualizuj
                             </Text>
                         </TouchableOpacity>
