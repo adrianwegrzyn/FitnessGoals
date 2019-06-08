@@ -6,9 +6,10 @@ import {
     ScrollView,
     TouchableOpacity,
     Image,
-    TextInput
+    TextInput, Alert
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {Navigation} from "react-native-navigation";
 
 
 
@@ -23,6 +24,18 @@ export default class Measurement extends Component<> {
             }
         };
     }
+
+    sendResult = () => {
+        this.newWindow('App');
+    };
+
+    newWindow = (window) => {
+        Navigation.push(this.props.componentId, {
+            component: {
+                name: window,
+            }
+        });
+    };
 
     constructor() {
         super();
@@ -236,7 +249,7 @@ export default class Measurement extends Component<> {
                         style={styles.buttonWeekPlan}>
                         <TouchableOpacity style={styles.touch} >
 
-                            <Text style={styles.buttonTextWeekPlan}>
+                            <Text onPress={() => this.sendResult()} style={styles.buttonTextWeekPlan}>
                                 Aktualizuj
                             </Text>
                         </TouchableOpacity>

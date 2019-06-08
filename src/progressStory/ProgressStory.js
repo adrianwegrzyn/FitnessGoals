@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import {progress} from "../json/progress";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import {Navigation} from 'react-native-navigation';
 
 export default class ProgressStory extends Component<> {
     constructor() {
