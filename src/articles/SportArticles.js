@@ -45,57 +45,57 @@ export default class SportArticles extends Component<> {
                 <ScrollView>
                     <View style={styles.measumerent}>
                         <Image style={{width: 320, height: 320, margin: 20}}
-                               source={{uri: 'https://i.iplsc.com/wisla-krakow-rafal-janicki-podpisal-kontrakt-z-klubem/00083YLYJK9L9HOW-C459.jpg'}}
+                               source={{uri: 'https://i.iplsc.com/robert-lewandowski-gdy-gramy-jednym-napastnikiem-jest-nam-ci/00084XHVVUOT45CC-C459.jpg'}}
                         />
                     </View>
                     {/*<Text style={styles.description}>Sezon reprezentacyjny rozpoczęty!</Text>*/}
                     <Text style={styles.reference}
-                          onPress={() => Linking.openURL('http://google.com')}>
-                        Wisła Kraków. Rafał Janicki podpisał kontrakt z klubem
+                          onPress={() => Linking.openURL('https://www.rmf24.pl/sport/news-robert-lewandowski-gdy-gramy-jednym-napastnikiem-jest-nam-ci,nId,3034021')}>
+                        Robert Lewandowski: Gdy gramy jednym napastnikiem, jest nam ciężej wykreować coś w ofensywie
                     </Text>
 
                     <View style={styles.measumerent}>
                         <Image style={{width: 320, height: 320, margin: 20}}
-                               source={{uri: 'https://i.iplsc.com/dawid-konarski-kalendarz-reprezentacyjny-jest-przeladowany-m/00083YGS1V9PTX8C-C459.jpg'}}
+                               source={{uri: 'https://i.iplsc.com/organizatorzy-french-open-krytykowani-za-wybor-kortow-dla-ko/00084WZ5198BVHVW-C459.jpg'}}
                         />
                     </View>
                     {/*<Text style={styles.description}>Sezon reprezentacyjny rozpoczęty!</Text>*/}
                     <Text style={styles.reference}
-                          onPress={() => Linking.openURL('http://google.com')}>
-                        Dawid Konarski: Kalendarz reprezentacyjny jest przeładowany. Mówimy o tym na każdym kroku
+                          onPress={() => Linking.openURL('https://www.rmf24.pl/sport/news-organizatorzy-french-open-krytykowani-za-wybor-kortow-dla-ko,nId,3032661')}>
+                        Organizatorzy French Open krytykowani za wybór kortów dla kobiecych półfinałów
                     </Text>
 
                     <View style={styles.measumerent}>
                         <Image style={{width: 320, height: 320, margin: 20}}
-                               source={{uri: 'https://i.iplsc.com/formula-1-kubica-najwolniejszy-na-drugim-treningu-przed-gp-m/00083WEWE10WJ2MX-C459.jpg'}}
+                               source={{uri: 'https://i.iplsc.com/bartosz-kurek-odchodzi-z-onico-warszawa/00084WQX6YBNE238-C459.jpg'}}
                         />
                     </View>
                     {/*<Text style={styles.description}>Sezon reprezentacyjny rozpoczęty!</Text>*/}
                     <Text style={styles.reference}
-                          onPress={() => Linking.openURL('http://google.com')}>
-                        Formuła 1. Kubica najwolniejszy na drugim treningu przed GP Monako
+                          onPress={() => Linking.openURL('https://www.rmf24.pl/raporty/raport-siatkarski/siatkowka/news-bartosz-kurek-odchodzi-z-onico-warszawa,nId,3032623')}>
+                        Bartosz Kurek odchodzi z Onico Warszawa
                     </Text>
 
                     <View style={styles.measumerent}>
                         <Image style={{width: 320, height: 320, margin: 20}}
-                               source={{uri: 'https://i.iplsc.com/fifa-zdecydowala-mundial-w-katarze-nie-bedzie-powiekszony/00083W5HDEU41T1P-C459.jpg'}}
+                               source={{uri: 'https://i.iplsc.com/reczna-na-orliku-finalisci-spotkaja-sie-w-kaliszu/00084VALH9TCCM71-C459.jpg'}}
                         />
                     </View>
                     {/*<Text style={styles.description}>Sezon reprezentacyjny rozpoczęty!</Text>*/}
                     <Text style={styles.reference}
-                          onPress={() => Linking.openURL('http://google.com')}>
-                        FIFA zdecydowała! Mundial w Katarze nie będzie powiększony
+                          onPress={() => Linking.openURL('https://www.rmf24.pl/sport/news-reczna-na-orliku-finalisci-spotkaja-sie-w-kaliszu,nId,3032478')}>
+                        Ręczna na Orliku. Finaliści spotkają się w Kaliszu
                     </Text>
 
                     <View style={styles.measumerent}>
                         <Image style={{width: 320, height: 320, margin: 20}}
-                               source={{uri: 'https://i.iplsc.com/french-open-hubert-hurkacz-zagra-z-djokovicem/00083WHG68OPJK7D-C459.jpg'}}
+                               source={{uri: 'https://i.iplsc.com/michal-winiarski-trenerem-trefla-gdansk-trafilismy-szostke-w/00084VIR5XBPPEV8-C459.jpg'}}
                         />
                     </View>
                     {/*<Text style={styles.description}>Sezon reprezentacyjny rozpoczęty!</Text>*/}
                     <Text style={styles.reference}
-                          onPress={() => Linking.openURL('http://google.com')}>
-                        French Open. Hubert Hurkacz zagra z Djokovicem
+                          onPress={() => Linking.openURL('https://www.rmf24.pl/sport/news-michal-winiarski-trenerem-trefla-gdansk-trafilismy-szostke-w,nId,3032492')}>
+                        Michał Winiarski trenerem Trefla Gdańsk. "Trafiliśmy szóstkę w totka"
                     </Text>
 
 
